@@ -22,3 +22,9 @@ Traffic Fixer Thailand - GitHub Ready Package
 - รถเข้าอาคารที่ drop-off node หน้าอาคารแล้วถือว่าเข้าอาคารสำเร็จ ไม่ค้างหน้าอาคาร
 - รถกลับรถได้เฉพาะ 4 แยก และปลายถนน/ทางตันเมื่อถนนขาด
 - ถ้าถนนขาด รถจะพยายามกลับบ้านแทนการค้างถาวร
+
+
+git status
+git add .
+git commit -m "Update sumogame"
+git push
