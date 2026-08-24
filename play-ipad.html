@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <title>Traffic Fixer Thailand — iPad</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#08151d}
+    body{position:fixed;inset:0;overscroll-behavior:none;touch-action:none}
+    #gameFrame{position:fixed;inset:0;width:100%;height:100%;border:0;background:#08151d}
+    #loading{position:fixed;inset:0;z-index:10;display:grid;place-items:center;color:#e2e8f0;font:600 13px system-ui,-apple-system,"Segoe UI",sans-serif;background:#08151d}
+    #loading.done{display:none}
+  </style>
+</head>
+<body>
+  <iframe id="gameFrame" src="./play-v2.html?ipadui=20260825" allow="fullscreen" title="Traffic Fixer Thailand"></iframe>
+  <div id="loading">กำลังเปิดโหมด iPad…</div>
+  <script>
+  (()=>{
+    const frame=document.getElementById('gameFrame');
+    const loading=document.getElementById('loading');
+    const compactCss=`
+html.ipad-mode #topbar:not(.collapsed){left:6px!important;right:6px!important;top:max(4px,env(safe-area-inset-top))!important;height:38px!important;min-height:38px!important;padding:3px 5px!important;gap:4px!important;border-radius:11px!important;align-items:center!important;overflow:hidden!important}
+html.ipad-mode .brand{display:none!important}
+html.ipad-mode #topbar>.collapse-btn:not(.edge-toggle),html.ipad-mode #bottombar>.collapse-btn:not(.edge-toggle),html.ipad-mode .panel>.collapse-btn:not(.edge-toggle),html.ipad-mode .build-tray .tray-collapse-btn{display:none!important}
+html.ipad-mode .stats{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:3px!important;min-width:0!important;flex:1 1 auto!important}
+html.ipad-mode .stat{min-width:0!important;height:30px!important;min-height:30px!important;padding:3px 4px!important;border-radius:8px!important}
+html.ipad-mode .stat .label{font-size:7.5px!important;line-height:1!important;gap:2px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+html.ipad-mode .stat b{font-size:9.5px!important;line-height:1.05!important;margin-top:2px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+html.ipad-mode .top-actions{display:flex!important;flex:0 0 auto!important;gap:3px!important;flex-wrap:nowrap!important;align-items:center!important}
+html.ipad-mode #topbar button,html.ipad-mode #topbar select{height:28px!important;min-height:28px!important;padding:2px 5px!important;font-size:8.5px!important;border-radius:7px!important;white-space:nowrap!important}
+html.ipad-mode #citySelect{width:72px!important;max-width:72px!important}
+html.ipad-mode #happinessGuideBtn{max-width:48px!important;padding-left:4px!important;padding-right:4px!important}
+html.ipad-mode #resetBtn{max-width:62px!important;padding-left:4px!important;padding-right:4px!important;overflow:hidden!important;text-overflow:ellipsis!important}
+html.ipad-mode .panel.left.city-feed-panel:not(.collapsed),html.ipad-mode .panel.right:not(.collapsed),html.ipad-mode body.explore-panel-open .panel.right.inspect-open:not(.collapsed){top:calc(max(4px,env(safe-area-inset-top)) + 44px)!important;bottom:calc(max(4px,env(safe-area-inset-bottom)) + 36px)!important;width:min(216px,calc(100vw - 14px))!important;padding:9px 7px 7px!important;border-radius:12px!important}
+html.ipad-mode .panel.left.city-feed-panel:not(.collapsed){left:6px!important;right:auto!important}
+html.ipad-mode .panel.right:not(.collapsed){right:6px!important;left:auto!important}
+html.ipad-mode .panel-title{font-size:11px!important;margin-bottom:3px!important}
+html.ipad-mode .panel .hint{font-size:9px!important;line-height:1.2!important;margin-bottom:4px!important}
+html.ipad-mode .panel .card,html.ipad-mode .panel .alert,html.ipad-mode .city-feed-item{font-size:9.5px!important;line-height:1.25!important;padding:5px 6px!important;margin-bottom:4px!important;border-radius:8px!important}
+html.ipad-mode .build-tray:not(.collapsed){left:6px!important;right:6px!important;bottom:calc(max(4px,env(safe-area-inset-bottom)) + 31px)!important;min-height:78px!important;max-height:88px!important;padding:4px 6px!important;border-radius:11px!important;overflow:hidden!important}
+html.ipad-mode .build-tray-head{height:15px!important;min-height:15px!important;margin:0 0 2px!important;font-size:9px!important;line-height:1!important}
+html.ipad-mode .build-tray-head span{display:none!important}
+html.ipad-mode .build-tray .tool-tabs{position:static!important;padding:1px 0 2px!important;margin:0!important;gap:3px!important;overflow-x:auto!important}
+html.ipad-mode .build-tray .tool-tab{padding:2px 5px!important;font-size:8px!important;min-height:19px!important;border-radius:999px!important}
+html.ipad-mode .build-tray .tool-grid{gap:4px!important;padding:0!important;overflow-x:auto!important}
+html.ipad-mode .build-tray .tool{flex:0 0 94px!important;height:34px!important;min-height:34px!important;padding:3px 4px!important;border-radius:8px!important}
+html.ipad-mode .build-tray .tool strong{font-size:8.5px!important;line-height:1.05!important;gap:3px!important}
+html.ipad-mode .build-tray .tool .tool-icon{width:16px!important;height:16px!important;min-width:16px!important;font-size:9px!important;border-radius:5px!important}
+html.ipad-mode .build-tray .tool small{display:none!important}
+html.ipad-mode #bottombar:not(.collapsed){left:6px!important;right:6px!important;bottom:max(3px,env(safe-area-inset-bottom))!important;height:27px!important;min-height:27px!important;padding:2px 4px!important;gap:3px!important;border-radius:9px!important;overflow-x:auto!important;overflow-y:hidden!important}
+html.ipad-mode #bottombar button{height:22px!important;min-height:22px!important;padding:2px 5px!important;font-size:8.5px!important;line-height:1!important;border-radius:6px!important;white-space:nowrap!important;flex:0 0 auto!important}
+html.ipad-mode #statusText,html.ipad-mode .map-legend{display:none!important}
+html.ipad-mode .edge-toggle{width:28px!important;min-width:28px!important;height:28px!important;padding:0 6px!important;font-size:10px!important;opacity:.76!important}
+html.ipad-mode .edge-toggle-build{min-width:58px!important;height:26px!important;font-size:9px!important;bottom:calc(max(3px,env(safe-area-inset-bottom)) + 31px)!important}
+@media (orientation:portrait){html.ipad-mode #happinessGuideBtn{display:none!important}html.ipad-mode #resetBtn{max-width:48px!important}html.ipad-mode #citySelect{width:64px!important;max-width:64px!important}html.ipad-mode .stat .label{font-size:7px!important}html.ipad-mode .stat b{font-size:9px!important}}
+`;
+
+    function updateEdgeLabels(d){
+      d.querySelectorAll('.edge-toggle[data-collapse-target]').forEach(btn=>{
+        const el=d.getElementById(btn.dataset.collapseTarget);
+        const collapsed=!!(el&&el.classList.contains('collapsed'));
+        btn.textContent=collapsed?(btn.dataset.openLabel||'+'):(btn.dataset.closeLabel||'−');
+        btn.classList.toggle('target-collapsed',collapsed);
+        btn.setAttribute('aria-pressed',collapsed?'true':'false');
+      });
+    }
+
+    function applyCompact(){
+      let d;
+      try{d=frame.contentDocument;}catch(_){return false;}
+      if(!d||!d.head||!d.getElementById('topbar')||!d.querySelector('#stats .stat')) return false;
+      d.documentElement.classList.add('ipad-mode');
+      if(!d.getElementById('ipadCompactStyles')){
+        const style=d.createElement('style');
+        style.id='ipadCompactStyles';
+        style.textContent=compactCss;
+        d.head.appendChild(style);
+      }
+      ['leftPanel','rightPanel','buildTray'].forEach(id=>{const el=d.getElementById(id);if(el)el.classList.add('collapsed');});
+      ['topbar','bottombar'].forEach(id=>{const el=d.getElementById(id);if(el)el.classList.remove('collapsed');});
+      updateEdgeLabels(d);
+      loading.classList.add('done');
+      return true;
+    }
+
+    function begin(){
+      let tries=0;
+      const timer=setInterval(()=>{
+        tries++;
+        if(applyCompact()||tries>120) clearInterval(timer);
+      },80);
+    }
+    frame.addEventListener('load',begin);
+    begin();
+  })();
+  </script>
+</body>
+</html>
