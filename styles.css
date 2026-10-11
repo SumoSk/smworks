@@ -372,7 +372,7 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
 .discover-step-arrow{display:grid;place-items:center;font:700 16px var(--sans);color:#87a9ef;width:23px;flex:none;}
 .discover-bottom{margin-top:16px;}
 .discover-caveat{max-width:1100px;font-size:10.5px;line-height:1.8;color:#7a889e;}
-.discover-bottom-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:17px;}
+.discover-bottom-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;margin-top:17px;}
 .discover-sources{font-size:10px;color:#8b98ac;}
 .discover-sources a{color:#5d7cba;text-decoration:underline;text-underline-offset:2px;}
 .discover-sources a:hover{color:var(--blue);}
