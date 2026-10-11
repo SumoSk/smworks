@@ -115,19 +115,21 @@ body{background:#fff}
  .header-inner{width:calc(100% - 34px)}
  /* Mobile art direction: show the real photo first at full opacity, then copy
     in its own clean section. Do not wash out the image to make overlaid text legible. */
- .hero.hero-editorial.container{width:100%;height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:0 0 35px;background:#fff}
+ .hero.hero-editorial.container{width:100%;height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:0 0 22px;background:#fff}
  .hero-editorial::before{display:none}
- .hero-editorial .hero-image{position:relative;inset:auto;z-index:auto;order:0;display:block;width:100%;height:clamp(260px,70vw,420px);margin:0;overflow:hidden;pointer-events:none}
+ .hero-editorial .hero-image{position:relative;inset:auto;z-index:auto;order:0;display:block;width:100%;height:clamp(225px,62vw,335px);margin:0;overflow:hidden;pointer-events:none}
  .hero-editorial .hero-stage{width:100%;height:100%}
  .hero-editorial .hero-image img{display:block;width:100%;height:100%;max-width:none;aspect-ratio:auto;object-fit:cover;object-position:55% 50%;opacity:1;border:0;border-radius:0;box-shadow:none}
- .hero-editorial .hero-copy{position:relative;z-index:1;order:1;width:calc(100% - 40px);max-width:560px;margin:0 auto;padding:24px 0 0}
- .hero-overline{font-size:9px;letter-spacing:1.35px;margin-bottom:12px}
- .hero-editorial h1{font-size:clamp(31px,8vw,39px);line-height:1.27;max-width:100%}
- .hero-editorial .intro{font-size:12.5px;line-height:1.75;margin:13px 0 18px;max-width:430px}
- .hero-editorial .actions .button{font-size:11px;min-height:42px;padding:10px 12px}
- .hero-editorial .hero-types{margin-top:19px}
- .hero-editorial .hero-types>span{font-size:9px}
+ .hero-editorial .hero-copy{position:relative;z-index:1;order:1;width:calc(100% - 40px);max-width:560px;margin:0 auto;padding:19px 0 0}
+ .hero-overline{font-size:9px;letter-spacing:1.35px;margin-bottom:8px}
+ .hero-editorial h1{font-size:clamp(29px,7.45vw,35px);line-height:1.24;max-width:100%}
+ .hero-editorial .intro{font-size:12.5px;line-height:1.7;margin:11px 0 15px;max-width:430px}
+ .hero-editorial .actions{gap:8px}
+ .hero-editorial .actions .button{font-size:11px;min-height:40px;padding:9px 12px}
+ .hero-editorial .hero-types{margin-top:12px;gap:5px 14px}
+ .hero-editorial .hero-types>span{display:none}
  .hero-editorial .hero-types b{font-size:10px}
+ .hero-editorial .hero-types b:first-of-type::before{display:none}
  .discover{padding-block:43px;background-position:64% top}
  .discover-heading h2{font-size:clamp(23px,6vw,28px)}
  .discover-card{background:rgba(255,255,255,.91)}
@@ -158,11 +160,11 @@ body{background:#fff}
  .contact{padding-block:51px}
 }
 @media(max-width:430px){
- .hero.hero-editorial.container{min-height:0;padding-bottom:30px}
- .hero-editorial .hero-image{height:clamp(248px,74vw,318px)}
- .hero-editorial h1{font-size:clamp(28px,7.7vw,33px)}
+ .hero.hero-editorial.container{min-height:0;padding-bottom:20px}
+ .hero-editorial .hero-image{height:clamp(220px,62vw,265px)}
+ .hero-editorial h1{font-size:clamp(28px,7.4vw,31px)}
  .hero-editorial .intro{font-size:12px}
- .hero-editorial .hero-copy{padding-top:22px}
+ .hero-editorial .hero-copy{padding-top:17px}
  .hero-editorial .hero-image img{object-position:55% 50%}
  .hero-editorial .actions{gap:8px}
  .photo-portfolio{height:204px}
