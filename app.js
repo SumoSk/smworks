@@ -11,3 +11,30 @@ const form=document.getElementById('brief-form');form.addEventListener('submit',
 document.getElementById('copy-brief').addEventListener('click',async()=>{const field=document.getElementById('brief-text');try{await navigator.clipboard.writeText(field.value);document.getElementById('brief-status').textContent='คัดลอกแล้ว พร้อมนำไปส่งผ่านช่องทางติดต่อของคุณ'}catch{field.focus();field.select();document.getElementById('brief-status').textContent='กรุณาคัดลอกข้อความที่เลือกไว้ หรือใช้ปุ่มดาวน์โหลดรายละเอียด'}});
 document.getElementById('download-brief').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob(['\ufeff',document.getElementById('brief-text').value],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='sumo-web-project-brief.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());document.getElementById('privacy-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const bounds=dialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)dialog.close()}});document.getElementById('year').textContent=new Date().getFullYear();
+
+
+// Mobile navigation: fully keyboard accessible and only used at narrow widths.
+(() => {
+  const toggle=document.getElementById('mobile-menu-toggle');
+  const menu=document.getElementById('mobile-menu');
+  if(!toggle||!menu)return;
+  const close=()=>{
+    menu.hidden=true;
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','เปิดเมนูนำทาง');
+  };
+  toggle.addEventListener('click',()=>{
+    const open=menu.hidden;
+    menu.hidden=!open;
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'ปิดเมนูนำทาง':'เปิดเมนูนำทาง');
+  });
+  menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',close));
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&!menu.hidden){close();toggle.focus();}
+  });
+  document.addEventListener('click',event=>{
+    if(!menu.hidden&&!menu.contains(event.target)&&!toggle.contains(event.target))close();
+  });
+  window.matchMedia('(min-width: 721px)').addEventListener('change',event=>{if(event.matches)close();});
+})();
