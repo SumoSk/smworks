@@ -114,11 +114,11 @@
  .discover-conclusion{margin-top:24px}
 }
 @media(max-width:720px){
- .discover-story{padding:38px 0 41px}
- .discover-overline{font-size:9px;letter-spacing:1.2px}
- .discover-story-heading{margin-bottom:20px}
- .discover-story-heading h2{font-size:clamp(23px,6vw,28px);line-height:1.45}
- .discover-story-heading p{font-size:11.5px;line-height:1.84;margin-top:11px}
+ .discover-story{padding:24px 0 34px}
+ .discover-overline{font-size:9px;letter-spacing:1.2px;margin-bottom:7px}
+ .discover-story-heading{margin-bottom:15px}
+ .discover-story-heading h2{font-size:clamp(23px,5.9vw,27px);line-height:1.34}
+ .discover-story-heading p{font-size:11.5px;line-height:1.73;margin-top:9px}
  .journey-card{padding:13px 14px;border-radius:13px}
  .journey-graphic{height:224px}
  .journey-social-logos{top:12px}
