@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><defs>
+<linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edf4ff"/><stop offset="1" stop-color="#cbdfff"/></linearGradient>
+<linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff7ef"/><stop offset="1" stop-color="#e8b7bb"/></linearGradient>
+<linearGradient id="sage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f0f4e7"/><stop offset="1" stop-color="#b3c9b4"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#163453"/><stop offset="1" stop-color="#06152f"/></linearGradient>
+<linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dbc9ae"/><stop offset="1" stop-color="#a7775d"/></linearGradient>
+<filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="27" stdDeviation="32" flood-color="#162d59" flood-opacity=".20"/></filter>
+<filter id="smallshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dy="12" stdDeviation="16" flood-color="#18293c" flood-opacity=".18"/></filter>
+<clipPath id="screen"><rect x="150" y="140" width="1300" height="720" rx="27"/></clipPath>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+</defs><rect width="1600" height="1000" fill="#ded9cc"/><path d="M0 780 640 250 1600 1000H0Z" fill="#c4b29b" opacity=".42"/><circle cx="1370" cy="180" r="320" fill="#f0e6d3" opacity=".9"/><rect x="150" y="140" width="1300" height="720" rx="27" fill="#102631" filter="url(#shadow)"/><g clip-path="url(#screen)"><rect x="150" y="140" width="1300" height="70" fill="#172e3a"/><circle cx="187" cy="173" r="8" fill="#fd9185"/><circle cx="214" cy="173" r="8" fill="#f5c46c"/><circle cx="241" cy="173" r="8" fill="#78c6a6"/><text x="800" y="180" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="4" fill="#dde4df">FORMA / DESIGN STUDIO</text></g>
+<g clip-path="url(#screen)"><rect x="150" y="210" width="1300" height="650" fill="#172d37"/>
+<rect x="878" y="210" width="572" height="650" fill="#927963"/><rect x="934" y="276" width="417" height="550" fill="#e3c8a3"/>
+<rect x="972" y="310" width="345" height="485" fill="#b88563"/><rect x="1021" y="357" width="248" height="432" fill="#e8d5b6"/>
+<path d="M1021 495Q1145 311 1269 493V789H1021Z" fill="#aa7b5b"/><path d="M1061 511Q1145 388 1229 511V788H1061Z" fill="#f1d9b7"/>
+<rect x="1110" y="600" width="70" height="190" fill="#7b563d"/><circle cx="1146" cy="620" r="15" fill="#bea180"/>
+<path d="M948 808H1380" stroke="#f3e5d3" stroke-width="11"/><path d="M1001 827H1332" stroke="#c09572" stroke-width="5"/>
+<text x="216" y="302" font-size="19" letter-spacing="8" fill="#bba68d">FORM / FUNCTION / FEELING</text>
+<text x="216" y="427" font-size="87" font-family="Georgia" fill="#f7f0df">Spaces that</text><text x="216" y="524" font-size="87" font-family="Georgia" fill="#f7f0df">tell stories.</text>
+<path d="M219 576H732" stroke="#8eaaa6" stroke-width="2"/><text x="218" y="636" font-size="26" fill="#c1cec9">Architecture • Interiors • Creative Direction</text>
+<rect x="216" y="701" width="249" height="63" rx="3" fill="#e2c29e"/><text x="341" y="741" text-anchor="middle" font-size="24" fill="#1b333d">View selected work  ↗</text>
+<text x="1190" y="839" text-anchor="middle" font-size="18" letter-spacing="5" fill="#f8f0e7">FORM / 2026</text>
+</g><rect x="1320" y="820" width="184" height="53" rx="26" fill="#fff" filter="url(#smallshadow)"/><text x="1412" y="855" text-anchor="middle" font-size="20" fill="#44535c">STUDIO</text></svg>

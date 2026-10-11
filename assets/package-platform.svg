@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><defs>
+<linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edf4ff"/><stop offset="1" stop-color="#cbdfff"/></linearGradient>
+<linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff7ef"/><stop offset="1" stop-color="#e8b7bb"/></linearGradient>
+<linearGradient id="sage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f0f4e7"/><stop offset="1" stop-color="#b3c9b4"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#163453"/><stop offset="1" stop-color="#06152f"/></linearGradient>
+<linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dbc9ae"/><stop offset="1" stop-color="#a7775d"/></linearGradient>
+<filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="27" stdDeviation="32" flood-color="#162d59" flood-opacity=".20"/></filter>
+<filter id="smallshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dy="12" stdDeviation="16" flood-color="#18293c" flood-opacity=".18"/></filter>
+<clipPath id="screen"><rect x="150" y="140" width="1300" height="720" rx="27"/></clipPath>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+</defs><rect width="1600" height="1000" fill="url(#dark)"/><circle cx="1470" cy="0" r="400" fill="#284b92" opacity=".55"/><circle cx="0" cy="940" r="460" fill="#226c9c" opacity=".25"/>
+<rect x="160" y="126" width="1270" height="734" rx="30" fill="#f8faff" filter="url(#shadow)"/><rect x="160" y="126" width="260" height="734" rx="30" fill="#122b57"/><rect x="420" y="126" width="1010" height="89" rx="25" fill="#f4f7fd"/>
+<text x="213" y="197" font-size="34" font-weight="800" fill="#fff">S.</text><text x="265" y="197" font-size="24" font-weight="700" fill="#cde0ff">SUMO SYSTEM</text>
+<rect x="207" y="268" width="169" height="55" rx="14" fill="#2f67eb"/><text x="241" y="304" font-size="22" fill="#fff">Overview</text>
+<g fill="#8faad4"><rect x="213" y="369" width="140" height="15" rx="7"/><rect x="213" y="425" width="163" height="15" rx="7"/><rect x="213" y="481" width="116" height="15" rx="7"/><rect x="213" y="537" width="155" height="15" rx="7"/></g>
+<text x="480" y="184" font-size="29" font-weight="700" fill="#263b60">Business overview</text><text x="1300" y="181" font-size="22" fill="#7690b8">Live dashboard</text>
+<rect x="480" y="262" width="258" height="175" rx="23" fill="#e9f1ff"/><rect x="765" y="262" width="258" height="175" rx="23" fill="#e7f6f1"/><rect x="1050" y="262" width="314" height="175" rx="23" fill="#fff0e9"/>
+<text x="514" y="311" font-size="22" fill="#5071a5">Customers</text><text x="514" y="381" font-size="58" font-weight="800" fill="#2854b0">1,248</text><text x="799" y="311" font-size="22" fill="#418b76">Projects</text><text x="799" y="381" font-size="58" font-weight="800" fill="#1a8766">86</text><text x="1083" y="311" font-size="22" fill="#bf8162">Growth</text><text x="1083" y="381" font-size="58" font-weight="800" fill="#b86b45">+34%</text>
+<rect x="480" y="468" width="884" height="327" rx="25" fill="#f2f6fc"/><path d="M515 746H1325M515 672H1325M515 598H1325M515 524H1325" stroke="#dfe8f6" stroke-width="3"/>
+<path d="M530 725Q638 716 681 676T834 626T1038 591T1189 525T1320 540" fill="none" stroke="#3276e8" stroke-width="12" stroke-linecap="round"/><path d="M530 725Q638 716 681 676T834 626T1038 591T1189 525T1320 540V755H530Z" fill="#4d96fc" opacity=".10"/>
+<circle cx="1189" cy="525" r="16" fill="#3276e8"/><rect x="1170" y="493" width="126" height="45" rx="23" fill="#173c85"/><text x="1233" y="522" text-anchor="middle" fill="#fff" font-size="20">+34%</text></g>
+<rect x="1123" y="790" width="339" height="106" rx="52" fill="#fff" filter="url(#smallshadow)"/><text x="1293" y="855" text-anchor="middle" font-size="28" font-weight="700" fill="#2855b5">BACK OFFICE</text></svg>

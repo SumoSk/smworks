@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><defs>
+<linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edf4ff"/><stop offset="1" stop-color="#cbdfff"/></linearGradient>
+<linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff7ef"/><stop offset="1" stop-color="#e8b7bb"/></linearGradient>
+<linearGradient id="sage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f0f4e7"/><stop offset="1" stop-color="#b3c9b4"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#163453"/><stop offset="1" stop-color="#06152f"/></linearGradient>
+<linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dbc9ae"/><stop offset="1" stop-color="#a7775d"/></linearGradient>
+<filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="27" stdDeviation="32" flood-color="#162d59" flood-opacity=".20"/></filter>
+<filter id="smallshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dy="12" stdDeviation="16" flood-color="#18293c" flood-opacity=".18"/></filter>
+<clipPath id="screen"><rect x="150" y="140" width="1300" height="720" rx="27"/></clipPath>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+</defs><rect width="1600" height="1000" fill="url(#sage)"/><circle cx="1300" cy="150" r="330" fill="#f8f9e9" opacity=".6"/><circle cx="250" cy="870" r="320" fill="#9db69c" opacity=".32"/><rect x="150" y="140" width="1300" height="720" rx="27" fill="#fffaf7" filter="url(#shadow)"/><g clip-path="url(#screen)"><rect x="150" y="140" width="1300" height="70" fill="#ffffff"/><circle cx="187" cy="173" r="8" fill="#fd9185"/><circle cx="214" cy="173" r="8" fill="#f5c46c"/><circle cx="241" cy="173" r="8" fill="#78c6a6"/><text x="800" y="180" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="4" fill="#667783">SOMA WELLNESS</text></g>
+<g clip-path="url(#screen)"><rect x="150" y="210" width="1300" height="650" fill="#f3f1e4"/>
+<rect x="810" y="210" width="640" height="650" fill="#a9b49c"/><ellipse cx="1170" cy="812" rx="310" ry="100" fill="#e6e0c8"/><ellipse cx="1208" cy="640" rx="171" ry="142" fill="#e8d2af"/>
+<ellipse cx="1196" cy="627" rx="138" ry="125" fill="#f7e6c5"/><ellipse cx="1189" cy="612" rx="110" ry="42" fill="#c2b093"/>
+<path d="M1133 592C1059 469 1009 370 1032 284M1133 592C1191 421 1191 333 1279 259M1133 592C1290 474 1362 392 1379 290" stroke="#4d6f50" stroke-width="11" fill="none"/>
+<ellipse cx="1054" cy="405" rx="39" ry="113" fill="#648869" transform="rotate(-36 1054 405)"/><ellipse cx="1186" cy="385" rx="37" ry="114" fill="#789476" transform="rotate(22 1186 385)"/><ellipse cx="1324" cy="411" rx="40" ry="100" fill="#4e795b" transform="rotate(54 1324 411)"/><ellipse cx="1263" cy="492" rx="35" ry="89" fill="#a1ad89" transform="rotate(-57 1263 492)"/>
+<text x="217" y="304" font-size="20" letter-spacing="7" fill="#6e816d">RECONNECT WITH YOURSELF</text>
+<text x="216" y="440" font-family="Georgia" font-size="84" fill="#344d42">Find your</text><text x="216" y="532" font-family="Georgia" font-size="84" fill="#344d42">balance.</text>
+<text x="218" y="609" font-size="26" fill="#697b6d">Rituals for body, mind &amp; wellbeing.</text>
+<rect x="216" y="676" width="243" height="65" rx="33" fill="#344e41"/><text x="338" y="718" text-anchor="middle" font-size="23" fill="#fff9ea">Our philosophy ↗</text>
+<circle cx="1349" cy="739" r="61" fill="#f8f4e7" opacity=".85"/><path d="M1320 740Q1352 701 1381 740Q1355 766 1320 740Z" fill="none" stroke="#6b886b" stroke-width="5"/>
+</g><rect x="101" y="111" width="175" height="52" rx="26" fill="#fff" filter="url(#smallshadow)"/><text x="188" y="146" font-size="19" fill="#627660" text-anchor="middle">WELLNESS</text></svg>

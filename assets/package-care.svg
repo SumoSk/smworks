@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><defs>
+<linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edf4ff"/><stop offset="1" stop-color="#cbdfff"/></linearGradient>
+<linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff7ef"/><stop offset="1" stop-color="#e8b7bb"/></linearGradient>
+<linearGradient id="sage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f0f4e7"/><stop offset="1" stop-color="#b3c9b4"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#163453"/><stop offset="1" stop-color="#06152f"/></linearGradient>
+<linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dbc9ae"/><stop offset="1" stop-color="#a7775d"/></linearGradient>
+<filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="27" stdDeviation="32" flood-color="#162d59" flood-opacity=".20"/></filter>
+<filter id="smallshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dy="12" stdDeviation="16" flood-color="#18293c" flood-opacity=".18"/></filter>
+<clipPath id="screen"><rect x="150" y="140" width="1300" height="720" rx="27"/></clipPath>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+</defs><rect width="1600" height="1000" fill="#e7f3ef"/><circle cx="250" cy="155" r="320" fill="#d0e6f0" opacity=".65"/><circle cx="1490" cy="850" r="380" fill="#bdd9c4" opacity=".50"/>
+<rect x="166" y="174" width="1226" height="692" rx="36" fill="#fff" filter="url(#shadow)"/><rect x="166" y="174" width="1226" height="88" rx="36" fill="#f7faf9"/>
+<circle cx="222" cy="215" r="11" fill="#f78e86"/><circle cx="257" cy="215" r="11" fill="#f3c669"/><circle cx="292" cy="215" r="11" fill="#7bc4aa"/>
+<text x="337" y="229" font-size="30" font-weight="700" fill="#3f6662">Website health</text>
+<rect x="229" y="322" width="497" height="452" rx="29" fill="#eff7f2"/><circle cx="478" cy="526" r="141" fill="#d2e9d7"/><circle cx="478" cy="526" r="106" fill="#fff"/><path d="m419 525 42 44 78-92" fill="none" stroke="#299972" stroke-width="23" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="479" y="722" text-anchor="middle" font-size="26" font-weight="700" fill="#298968">All systems healthy</text>
+<rect x="778" y="322" width="542" height="132" rx="26" fill="#eaf2fe"/><text x="823" y="375" font-size="25" fill="#587eaf">Maintenance status</text><rect x="822" y="399" width="430" height="17" rx="8" fill="#cbdcf2"/><rect x="822" y="399" width="365" height="17" rx="8" fill="#3874d7"/>
+<rect x="778" y="480" width="542" height="133" rx="26" fill="#eef6f3"/><text x="823" y="535" font-size="25" fill="#537b6e">Content updates</text><rect x="823" y="559" width="428" height="16" rx="8" fill="#c9e1d8"/><rect x="823" y="559" width="308" height="16" rx="8" fill="#3ea383"/>
+<rect x="778" y="638" width="542" height="136" rx="26" fill="#f7f2e8"/><text x="823" y="693" font-size="25" fill="#967b5b">Performance checks</text><rect x="823" y="718" width="428" height="16" rx="8" fill="#e8dccb"/><rect x="823" y="718" width="392" height="16" rx="8" fill="#c2a17c"/>
+<rect x="1140" y="797" width="299" height="95" rx="47" fill="#fff" filter="url(#smallshadow)"/><text x="1290" y="855" text-anchor="middle" font-size="29" font-weight="700" fill="#31876c">SITE CARE</text></svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><defs>
+<linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edf4ff"/><stop offset="1" stop-color="#cbdfff"/></linearGradient>
+<linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff7ef"/><stop offset="1" stop-color="#e8b7bb"/></linearGradient>
+<linearGradient id="sage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f0f4e7"/><stop offset="1" stop-color="#b3c9b4"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#163453"/><stop offset="1" stop-color="#06152f"/></linearGradient>
+<linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dbc9ae"/><stop offset="1" stop-color="#a7775d"/></linearGradient>
+<filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="27" stdDeviation="32" flood-color="#162d59" flood-opacity=".20"/></filter>
+<filter id="smallshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dy="12" stdDeviation="16" flood-color="#18293c" flood-opacity=".18"/></filter>
+<clipPath id="screen"><rect x="150" y="140" width="1300" height="720" rx="27"/></clipPath>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+</defs><rect width="1600" height="1000" fill="url(#sky)"/><path d="M0 800Q550 480 1160 970L1600 700V1000H0Z" fill="#b2c9f5" opacity=".56"/><circle cx="1433" cy="98" r="238" fill="#fff" opacity=".65"/><rect x="150" y="140" width="1300" height="720" rx="27" fill="#fffaf7" filter="url(#shadow)"/><g clip-path="url(#screen)"><rect x="150" y="140" width="1300" height="70" fill="#ffffff"/><circle cx="187" cy="173" r="8" fill="#fd9185"/><circle cx="214" cy="173" r="8" fill="#f5c46c"/><circle cx="241" cy="173" r="8" fill="#78c6a6"/><text x="800" y="180" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="4" fill="#667783">YOUR BRAND / ON THE WEB</text></g>
+<g clip-path="url(#screen)"><rect x="150" y="210" width="1300" height="650" fill="#fff9ee"/><rect x="891" y="210" width="559" height="650" fill="#e6b885"/>
+<circle cx="1178" cy="509" r="214" fill="#f1d6b2"/><ellipse cx="1164" cy="638" rx="195" ry="53" fill="#bf8556" opacity=".35"/>
+<path d="M1022 551Q1080 420 1168 515Q1217 403 1305 538Q1332 635 1240 663H1081Q989 632 1022 551Z" fill="#c17d41"/><path d="M1030 533Q1084 441 1152 530Q1222 430 1304 531" fill="none" stroke="#efc187" stroke-width="23" stroke-linecap="round"/>
+<ellipse cx="1143" cy="544" rx="24" ry="17" fill="#ffdeb0"/><ellipse cx="1250" cy="574" rx="22" ry="15" fill="#ffdeb0"/>
+<text x="225" y="300" font-size="22" letter-spacing="7" fill="#b5855e">LOCAL BUSINESS / GLOBAL REACH</text>
+<text x="225" y="421" font-family="Georgia" font-size="86" fill="#3f302c">Fresh stories.</text><text x="225" y="512" font-family="Georgia" font-size="86" fill="#3f302c">Made daily.</text>
+<text x="225" y="593" font-size="26" fill="#81674f">Your business, beautifully presented online.</text>
+<rect x="225" y="669" width="252" height="68" rx="9" fill="#594232"/><text x="351" y="713" text-anchor="middle" font-size="24" fill="white">See our story ↗</text>
+<rect x="1003" y="748" width="350" height="71" rx="36" fill="#fffbf3"/><text x="1178" y="791" text-anchor="middle" font-size="23" fill="#816044">Explore our menu   ↗</text>
+</g><rect x="118" y="110" width="156" height="51" rx="25" fill="white" filter="url(#smallshadow)"/><text x="196" y="144" font-size="18" fill="#3760a2" text-anchor="middle">YOUR SITE</text></svg>

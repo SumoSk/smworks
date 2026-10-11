@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><defs>
+<linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#edf4ff"/><stop offset="1" stop-color="#cbdfff"/></linearGradient>
+<linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff7ef"/><stop offset="1" stop-color="#e8b7bb"/></linearGradient>
+<linearGradient id="sage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f0f4e7"/><stop offset="1" stop-color="#b3c9b4"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#163453"/><stop offset="1" stop-color="#06152f"/></linearGradient>
+<linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dbc9ae"/><stop offset="1" stop-color="#a7775d"/></linearGradient>
+<filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="27" stdDeviation="32" flood-color="#162d59" flood-opacity=".20"/></filter>
+<filter id="smallshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dy="12" stdDeviation="16" flood-color="#18293c" flood-opacity=".18"/></filter>
+<clipPath id="screen"><rect x="150" y="140" width="1300" height="720" rx="27"/></clipPath>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+</defs><rect width="1600" height="1000" fill="url(#sky)"/><circle cx="1340" cy="143" r="380" fill="#fff" opacity=".50"/><circle cx="170" cy="885" r="390" fill="#9dbeff" opacity=".26"/>
+<rect x="148" y="188" width="1200" height="630" rx="33" fill="#fff" filter="url(#shadow)"/><rect x="148" y="188" width="1200" height="75" rx="33" fill="#fafcff"/><circle cx="198" cy="226" r="12" fill="#ed7e83"/><circle cx="230" cy="226" r="12" fill="#e9bd62"/><circle cx="263" cy="226" r="12" fill="#72c3aa"/>
+<rect x="208" y="330" width="429" height="32" rx="16" fill="#244eb6"/><rect x="208" y="391" width="525" height="24" rx="12" fill="#dbe5f2"/><rect x="208" y="436" width="488" height="24" rx="12" fill="#e6eef7"/><rect x="208" y="481" width="409" height="24" rx="12" fill="#e6eef7"/><rect x="208" y="579" width="226" height="68" rx="20" fill="#2864ec"/>
+<rect x="818" y="297" width="446" height="442" rx="45" fill="#d9e8ff"/><circle cx="1041" cy="486" r="145" fill="#9dbcf5"/><rect x="968" y="382" width="139" height="232" rx="22" fill="white"/><circle cx="1037" cy="445" r="38" fill="#345ec2"/><path d="M1008 534H1065M1008 555H1052" stroke="#c6d7f6" stroke-width="14" stroke-linecap="round"/>
+<g filter="url(#smallshadow)"><rect x="1119" y="348" width="289" height="565" rx="44" fill="#112547"/><rect x="1133" y="366" width="261" height="531" rx="33" fill="#fff"/><rect x="1163" y="431" width="200" height="151" rx="20" fill="#dbe9ff"/><circle cx="1270" cy="490" r="48" fill="#98b3ec"/><rect x="1168" y="626" width="188" height="19" rx="9" fill="#4777d9"/><rect x="1168" y="661" width="158" height="15" rx="7" fill="#c0d1ef"/><rect x="1168" y="695" width="172" height="15" rx="7" fill="#c0d1ef"/><rect x="1168" y="771" width="152" height="49" rx="24" fill="#2a61e7"/></g>
+<rect x="165" y="785" width="302" height="91" rx="46" fill="#fff" filter="url(#smallshadow)"/><text x="316" y="841" font-weight="700" font-size="31" fill="#2864ec" text-anchor="middle">WEB DESIGN</text></svg>
