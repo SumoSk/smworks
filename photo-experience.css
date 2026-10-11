@@ -113,16 +113,19 @@ body{background:#fff}
 }
 @media(max-width:760px){
  .header-inner{width:calc(100% - 34px)}
- .hero.hero-editorial.container{width:100%;min-height:720px;align-items:start}
- .hero-editorial .hero-image img{object-position:57% 100%}
- .hero-editorial::before{background:
-   linear-gradient(180deg,rgba(250,252,255,1) 0%,rgba(250,252,255,.98) 20%,rgba(250,252,255,.95) 37%,rgba(248,251,255,.72) 50%,rgba(247,249,252,.08) 77%,rgba(246,249,255,.11) 100%)}
- .hero-editorial .hero-copy{width:calc(100% - 36px);margin:0 auto;padding:46px 0 0}
- .hero-overline{font-size:9px;letter-spacing:1.35px;margin-bottom:13px}
- .hero-editorial h1{font-size:clamp(31px,8vw,39px);line-height:1.32;max-width:380px}
- .hero-editorial .intro{font-size:12.5px;line-height:1.83;margin:14px 0 19px;max-width:430px}
+ /* Mobile art direction: show the real photo first at full opacity, then copy
+    in its own clean section. Do not wash out the image to make overlaid text legible. */
+ .hero.hero-editorial.container{width:100%;height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:0 0 35px;background:#fff}
+ .hero-editorial::before{display:none}
+ .hero-editorial .hero-image{position:relative;inset:auto;z-index:auto;order:0;display:block;width:100%;height:clamp(260px,70vw,420px);margin:0;overflow:hidden;pointer-events:none}
+ .hero-editorial .hero-stage{width:100%;height:100%}
+ .hero-editorial .hero-image img{display:block;width:100%;height:100%;max-width:none;aspect-ratio:auto;object-fit:cover;object-position:55% 50%;opacity:1;border:0;border-radius:0;box-shadow:none}
+ .hero-editorial .hero-copy{position:relative;z-index:1;order:1;width:calc(100% - 40px);max-width:560px;margin:0 auto;padding:24px 0 0}
+ .hero-overline{font-size:9px;letter-spacing:1.35px;margin-bottom:12px}
+ .hero-editorial h1{font-size:clamp(31px,8vw,39px);line-height:1.27;max-width:100%}
+ .hero-editorial .intro{font-size:12.5px;line-height:1.75;margin:13px 0 18px;max-width:430px}
  .hero-editorial .actions .button{font-size:11px;min-height:42px;padding:10px 12px}
- .hero-editorial .hero-types{margin-top:18px}
+ .hero-editorial .hero-types{margin-top:19px}
  .hero-editorial .hero-types>span{font-size:9px}
  .hero-editorial .hero-types b{font-size:10px}
  .discover{padding-block:43px;background-position:64% top}
@@ -155,12 +158,12 @@ body{background:#fff}
  .contact{padding-block:51px}
 }
 @media(max-width:430px){
- .hero.hero-editorial.container{min-height:665px}
+ .hero.hero-editorial.container{min-height:0;padding-bottom:30px}
+ .hero-editorial .hero-image{height:clamp(248px,74vw,318px)}
  .hero-editorial h1{font-size:clamp(28px,7.7vw,33px)}
  .hero-editorial .intro{font-size:12px}
- .hero-editorial .hero-copy{padding-top:37px}
- .hero-editorial .hero-image img{object-position:58% bottom}
- .hero-editorial::before{background:linear-gradient(180deg,#fafcff 0%,rgba(250,252,255,.99) 27%,rgba(250,252,255,.93) 44%,rgba(250,252,255,.6) 57%,rgba(250,252,255,.06) 78%)}
+ .hero-editorial .hero-copy{padding-top:22px}
+ .hero-editorial .hero-image img{object-position:55% 50%}
  .hero-editorial .actions{gap:8px}
  .photo-portfolio{height:204px}
  .photo-portfolio-large{height:270px}
