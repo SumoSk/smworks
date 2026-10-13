@@ -343,3 +343,17 @@
  .discover-answer-type{font-size:7.5px}
 }
 @media(prefers-reduced-motion:reduce){.discover-explainer *{transition:none!important}}
+
+/* Approved original concept illustration on the left; answer cards remain native, editable text. */
+.discover-concept-figure{display:block;position:relative;margin:0;border:1px solid #dce6f3;border-radius:15px;overflow:hidden;background:#f7f9ff;box-shadow:0 13px 31px rgba(43,81,135,.11)}
+.discover-concept-img{display:block;width:100%;height:auto;aspect-ratio:994/845;object-fit:contain}
+.discover-visual-hint{max-width:540px;color:#6b7c94;font-size:11px;line-height:1.75;margin:11px 0 1px}
+.discover-concept-figure:hover{border-color:#becfee}
+@media(max-width:840px){
+ .discover-concept-figure{max-width:690px}
+ .discover-visual-hint{font-size:11.5px}
+}
+@media(max-width:610px){
+ .discover-concept-figure{border-radius:11px}
+ .discover-visual-hint{font-size:10.5px;line-height:1.7;margin:9px 0 2px}
+}
