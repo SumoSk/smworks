@@ -38,3 +38,22 @@ const dialog=document.getElementById('privacy-dialog');document.getElementById('
   });
   window.matchMedia('(min-width: 721px)').addEventListener('change',event=>{if(event.matches)close();});
 })();
+
+// Scale the shared RADIANCE preview to its miniature browser width.
+// The page itself remains a single source of truth: examples/clinic.html.
+(() => {
+  const viewport = document.querySelector('.brain-live-viewport');
+  const iframe = document.getElementById('brain-live-demo');
+  if (!viewport || !iframe) return;
+  const resizePreview = () => {
+    const width = viewport.clientWidth;
+    if (width > 0) iframe.style.transform = 'scale(' + (width / 1200).toFixed(5) + ')';
+  };
+  resizePreview();
+  if (typeof ResizeObserver !== 'undefined') {
+    const observer = new ResizeObserver(resizePreview);
+    observer.observe(viewport);
+  } else {
+    window.addEventListener('resize', resizePreview, {passive: true});
+  }
+})();
