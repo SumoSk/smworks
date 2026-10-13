@@ -279,3 +279,29 @@ body{background:#fff}
 @media(max-width:380px){
   .real-work--case .real-work-open{grid-column:1/-1;justify-self:stretch;text-align:center}
 }
+
+/* Confirmed SUMO WEB contact methods and frictionless quote actions. */
+.contact-methods{display:grid;grid-template-columns:1fr;gap:9px;margin-top:22px;max-width:405px}
+.contact-method{min-width:0;display:grid;grid-template-columns:72px minmax(0,1fr);grid-template-areas:"kind value" "kind hint";align-items:center;column-gap:9px;row-gap:2px;padding:12px 14px;background:rgba(255,255,255,.085);border:1px solid rgba(226,236,255,.26);border-radius:9px;color:#fff;text-decoration:none;transition:background .2s,border-color .2s}
+.contact-method:hover,.contact-method:focus-visible{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.65)}
+.contact-method--line{border-color:#91dcaa55}
+.contact-method>span{grid-area:kind;color:#bad4ff;font-size:11px;font-weight:800;letter-spacing:.04em}
+.contact-method--line>span{color:#a4f1b9}
+.contact-method>strong{grid-area:value;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.contact-method>small{grid-area:hint;color:#c5d8f4;font-size:10px;line-height:1.5}
+.mobile-nav .mobile-line-link{color:#138c4b;font-weight:700}
+.brief-send-actions{margin:12px 0 8px}
+#brief-output .brief-send-note{display:block;font-size:10px;line-height:1.7;color:#65768f}
+#brief-output .actions .text-link{white-space:nowrap}
+.footer-contact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.footer-contact a{color:#45628f;font-size:11px;line-height:1.55;text-decoration:underline;text-underline-offset:3px}
+.footer-contact a:hover,.footer-contact a:focus-visible{color:#1e5ec7}
+@media(max-width:900px){.footer-contact{flex-basis:100%;justify-content:flex-start}}
+@media(max-width:720px){
+  .contact-methods{margin-top:16px;gap:7px}
+  .contact-method{padding:10px 12px;grid-template-columns:66px minmax(0,1fr)}
+  .contact-method>strong{font-size:12px}
+  #brief-output .actions .button{width:100%;justify-content:center;text-align:center}
+  #brief-output .actions .text-link{width:auto}
+  .footer-contact{flex-basis:100%;gap:8px 14px}
+}
