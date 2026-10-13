@@ -241,3 +241,41 @@ body{background:#fff}
   .process-steps p{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.package-grid article{transition:none!important}}
+
+/* Conversion improvements: restrained proof, proposal clarity and native sharing. */
+.real-work.real-work--case{align-items:flex-start;gap:15px;padding:21px 23px}
+.real-work--case .real-work-body{flex:1;min-width:0}
+.real-work--case .real-work-eyebrow{display:block;font-size:10px;letter-spacing:.075em;font-weight:700;color:#416db1;margin-bottom:5px}
+.real-work--case h3{font-size:16px;line-height:1.45;margin:0 0 8px}
+.real-work--case .real-work-body>p{max-width:660px;font-size:12px;line-height:1.8}
+.case-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 9px;padding-top:13px;border-top:1px solid #e9eef5}
+.case-points>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.case-points b{font-size:11px;color:#263f63;font-weight:700}
+.case-points span{font-size:11px;line-height:1.65;color:#64758b}
+.real-work--case .case-note{display:block;font-size:10px;line-height:1.5;color:#7b879a}
+.real-work--case .real-work-open{margin-left:auto;align-self:start}
+.package-clarity{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px;margin-top:20px;padding:17px 2px 2px;border-top:1px solid #dce6f3}
+.package-clarity>div{display:flex;flex-direction:column;gap:5px}
+.package-clarity strong{font-size:12px;color:#243959}
+.package-clarity span{font-size:11px;line-height:1.8;color:#61728d}
+.contact-transparency{max-width:380px;margin-top:18px;font-size:11px!important;line-height:1.75;color:#d9e8ff!important}
+#brief-output .actions{flex-wrap:wrap;align-items:center;gap:10px}
+#brief-output .actions .button,#brief-output .actions .text-link{min-height:40px}
+#brief-output .actions .button.outline{background:transparent;border:1px solid #b5cef6;color:inherit}
+@media(max-width:900px){
+  .real-work.real-work--case{gap:12px}
+  .case-points{grid-template-columns:1fr;gap:9px;margin-top:12px}
+  .case-points>div{gap:2px}
+}
+@media(max-width:720px){
+  .real-work.real-work--case{display:grid;grid-template-columns:42px minmax(0,1fr);padding:17px;align-items:start;gap:10px}
+  .real-work--case .real-work-body{min-width:0!important}
+  .real-work--case .real-work-open{grid-column:2;margin-left:0;justify-self:start}
+  .package-clarity{grid-template-columns:1fr;gap:14px;margin-top:14px;padding-top:16px}
+  .contact-transparency{margin-top:11px}
+  #brief-output .actions{gap:8px}
+  #brief-output .actions .button{font-size:11px;padding:9px 12px}
+}
+@media(max-width:380px){
+  .real-work--case .real-work-open{grid-column:1/-1;justify-self:stretch;text-align:center}
+}
