@@ -212,3 +212,10 @@
  .brain-path-copy strong{font-size:10.5px}
  .brain-path-copy p{font-size:10px}
 }
+
+/* RADIANCE preview shares the actual lower-page layout instead of a separate mockup. */
+.brain-live-viewport{position:relative;width:100%;aspect-ratio:1200/790;overflow:hidden;background:#fffaf7;isolation:isolate}
+.brain-live-iframe{position:absolute;top:0;left:0;display:block;width:1200px;height:790px;max-width:none;border:0;background:#fffaf7;transform:scale(.42);transform-origin:0 0;pointer-events:none}
+.brain-live-open{position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;gap:7px;align-self:center;margin-top:11px;padding:8px 14px;border:1px solid #d8e2f1;border-radius:999px;background:#fff;color:#345b8e;font-size:11px;font-weight:700;line-height:1.4;text-decoration:none;box-shadow:0 4px 15px #17478b12}
+.brain-live-open:hover,.brain-live-open:focus-visible{border-color:#789dd1;background:#f3f8ff;color:#174f9c}
+@media(max-width:610px){.brain-live-open{margin-top:10px;font-size:10px;padding:8px 12px}.brain-live-viewport{aspect-ratio:1200/790}}
