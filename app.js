@@ -7,7 +7,35 @@ document.querySelectorAll('[data-device]').forEach(button=>button.addEventListen
 const panels={overview:'<div class="metrics"><div class="metric"><small>ลูกค้า</small><b>24</b></div><div class="metric"><small>งานติดตาม</small><b>06</b></div><div class="metric"><small>นัดหมาย</small><b>08</b></div></div><h4 class="demo-subtitle">ภาพรวมการติดต่อ</h4><div class="chart"><div style="height:35%"><span>จ.</span></div><div style="height:61%"><span>อ.</span></div><div style="height:45%"><span>พ.</span></div><div style="height:76%"><span>พฤ.</span></div><div style="height:57%"><span>ศ.</span></div><div style="height:93%"><span>ส.</span></div><div style="height:65%"><span>อา.</span></div></div>',customers:'<h4 class="demo-subtitle">รายชื่อลูกค้า</h4><table class="demo-table"><thead><tr><th>ลูกค้า</th><th>งานที่สนใจ</th><th>สถานะ</th></tr></thead><tbody><tr><td>ลูกค้า A</td><td>บริการ A</td><td><span class="status">นัดหมายแล้ว</span></td></tr><tr><td>ลูกค้า B</td><td>บริการ B</td><td><span class="status">รอติดต่อ</span></td></tr><tr><td>ลูกค้า C</td><td>บริการ A</td><td><span class="status">ติดตามผล</span></td></tr></tbody></table>',followup:'<h4 class="demo-subtitle">งานที่ต้องติดตาม</h4><div class="task"><span>01</span><div>ติดต่อลูกค้า A<small>ยืนยันข้อมูลก่อนนัดหมาย</small></div></div><div class="task"><span>02</span><div>ส่งรายละเอียดบริการ<small>ลูกค้า B</small></div></div><div class="task"><span>03</span><div>ติดตามหลังรับบริการ<small>ลูกค้า C</small></div></div>'};
 function selectPanel(button){document.querySelectorAll('[data-panel]').forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.tabIndex=b===button?0:-1;b.id=`panel-tab-${b.dataset.panel}`});document.getElementById('dashboard-content').innerHTML=panels[button.dataset.panel];document.getElementById('dashboard-content').setAttribute('aria-labelledby',button.id)}document.querySelectorAll('[data-panel]').forEach(button=>button.addEventListener('click',()=>selectPanel(button)));selectPanel(document.querySelector('[data-panel="overview"]'));keyboardTabs('[data-panel]',selectPanel);
 document.querySelectorAll('.choose-package').forEach(link=>link.addEventListener('click',()=>{document.getElementById('package-select').value=link.dataset.package}));
-const form=document.getElementById('brief-form');form.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(form);const brief=['รายละเอียดงานเว็บไซต์ — SUMO WEB',`ชื่อธุรกิจ: ${String(data.get('business')).trim()}`,`ประเภทธุรกิจ: ${data.get('type')}`,`จังหวัด: ${String(data.get('province')).trim()||'ยังไม่ระบุ'}`,`บริการที่สนใจ: ${data.get('package')}`,`ช่องทางติดต่อกลับ: ${String(data.get('reply')).trim()||'ยังไม่ระบุ'}`,`สิ่งที่ต้องการ: ${String(data.get('details')).trim()||'ขอปรึกษารายละเอียดเพิ่มเติม'}`].join('\n');document.getElementById('brief-text').value=brief;document.getElementById('brief-output').hidden=false;document.getElementById('brief-status').textContent='รายละเอียดพร้อมแล้ว ข้อมูลยังไม่ถูกส่ง เลือกแชร์ผ่าน LINE/แอปอื่น หรือคัดลอกส่งไปยังผู้ให้บริการ';document.getElementById('brief-output').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})});
+const form=document.getElementById('brief-form');form.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(form);const brief=['รายละเอียดงานเว็บไซต์ — SUMO WEB',`ชื่อธุรกิจ: ${String(data.get('business')).trim()}`,`ประเภทธุรกิจ: ${data.get('type')}`,`จังหวัด: ${String(data.get('province')).trim()||'ยังไม่ระบุ'}`,`บริการที่สนใจ: ${data.get('package')}`,`ช่องทางติดต่อกลับ: ${String(data.get('reply')).trim()||'ยังไม่ระบุ'}`,`สิ่งที่ต้องการ: ${String(data.get('details')).trim()||'ขอปรึกษารายละเอียดเพิ่มเติม'}`].join('\n');document.getElementById('brief-text').value=brief;document.getElementById('brief-output').hidden=false;document.getElementById('brief-status').textContent='พร้อมส่งแล้ว: กดส่งอีเมลเพื่อเปิดแอปพร้อมข้อความ หรือคัดลอกและเปิด LINE เพื่อนำข้อความไปส่งเอง';document.getElementById('brief-output').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})});
+// Confirmed business channels. Email opens a draft; the visitor must explicitly press Send.
+document.getElementById('email-brief').addEventListener('click',()=>{
+  const message=document.getElementById('brief-text').value;
+  const status=document.getElementById('brief-status');
+  if(!message){status.textContent='กรุณาเตรียมรายละเอียดก่อน';return;}
+  const subject=encodeURIComponent('ขอประเมินเว็บไซต์ — SUMO WEB');
+  const body=encodeURIComponent(message);
+  status.textContent='กำลังเปิดแอปอีเมล กรุณาตรวจผู้รับและกดส่งด้วยตัวเอง';
+  window.location.href='mailto:sumoskb@hotmail.com?subject='+subject+'&body='+body;
+});
+// The LINE ID link opens independently; copying occurs on the same user click.
+document.getElementById('line-brief').addEventListener('click',()=>{
+  const field=document.getElementById('brief-text');
+  const status=document.getElementById('brief-status');
+  const message=field.value;
+  if(!message){status.textContent='กรุณาเตรียมรายละเอียดก่อน';return;}
+  if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){
+    navigator.clipboard.writeText(message).then(()=>{
+      status.textContent='คัดลอกข้อความแล้ว กรุณาวางลงในแชท LINE: sumoskb แล้วกดส่ง';
+    }).catch(()=>{
+      field.focus();field.select();
+      status.textContent='ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคัดลอกข้อความที่เลือกแล้ววางใน LINE: sumoskb';
+    });
+  }else{
+    field.focus();field.select();
+    status.textContent='กรุณาคัดลอกข้อความที่เลือก แล้ววางใน LINE: sumoskb';
+  }
+});
 // Share sheet is client-only: the visitor selects both the app and recipient.
 // This does not silently submit a lead or invent a destination contact account.
 document.getElementById('share-brief').addEventListener('click',async()=>{
