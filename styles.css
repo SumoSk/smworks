@@ -325,3 +325,28 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
  .contact form .lead-privacy-notice{font-size:10px;margin-top:8px}
  .contact form .lead-privacy-link{font-size:10px}
 }
+
+/* SUMO WEB homepage: concise public prices; full scopes live on pricing.html. */
+.package-grid .home-price-overline{display:block;color:#4d7fce;font:800 9.5px/1.5 var(--sans);letter-spacing:1.1px;margin:0 0 6px}
+.package-grid .home-price-sub{font-size:11px;line-height:1.7;color:#62748e;min-height:59px;margin:4px 0 0}
+.package-grid .home-price-amount{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;margin:14px 0 2px;padding:12px 0;border-top:1px solid #e8edf6;border-bottom:1px solid #e8edf6}
+.package-grid .home-price-amount small{font-size:10px;color:#7184a3;width:100%}
+.package-grid .home-price-amount strong{color:#225dca;font:800 30px/1.2 var(--sans)}
+.package-grid .home-price-amount strong span{font:600 11px/1.5 var(--font);color:#7c8aa3}
+.package-grid .check-list{margin-top:15px}
+.package-grid .check-list li{font-size:11px;line-height:1.7;margin-bottom:5px}
+.package-grid article>.button{margin-top:auto;align-self:stretch}
+.home-price-more{text-align:center;margin-top:19px}
+.home-price-more .button{font-size:11.5px}
+.desktop-nav .nav-pricing{font-weight:800;color:#245fc7}
+.mobile-nav .nav-pricing{color:#245fc7;font-weight:800}
+.contact form .price-selection-hint{background:#f1f7ff;color:#2f63aa;font-size:10.5px;line-height:1.65;border:1px solid #dae8fc;border-radius:7px;padding:9px 10px;margin:0 0 10px}
+@media(max-width:900px){
+ .desktop-nav{gap:13px}
+ .header-inner{gap:13px}
+ .header-actions{gap:9px}
+}
+@media(max-width:720px){
+ .package-grid .home-price-sub{min-height:0}
+ .package-grid .home-price-amount strong{font-size:28px}
+}
