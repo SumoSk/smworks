@@ -59,8 +59,7 @@ form.addEventListener('submit',async event=>{
         service_interest:packageName,
         project_details:details,
         contact_channel:reply,
-        website_url:String(data.get('website_url')||''),
-        consent:data.get('consent')==='on'
+        website_url:String(data.get('website_url')||'')
       })
     });
     const payload=await response.json().catch(()=>({}));
