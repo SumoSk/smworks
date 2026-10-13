@@ -84,7 +84,7 @@ body{background:#fff}
 .package-grid .featured:before{z-index:2}
 /* Full-width closing image under a blue overlay, preserving legibility of the white form. */
 .contact{position:relative;isolation:isolate;background:#14306d url('assets/cta-blue.svg') center/cover no-repeat;padding-block:80px}
-.contact:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(6,25,67,.84),rgba(11,45,105,.82) 47%,rgba(24,76,158,.7)),url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1500&q=80&fit=crop') center/cover no-repeat}
+.contact:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(6,25,67,.84),rgba(11,45,105,.82) 47%,rgba(24,76,158,.7)),url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1500&q=80&fit=crop') center/cover no-repeat}
 .contact .contact-grid{align-items:center}
 .contact h2{font-size:clamp(28px,2.9vw,39px)}
 .contact form{background:rgba(255,255,255,.97);box-shadow:0 25px 72px rgba(3,13,45,.15)}
