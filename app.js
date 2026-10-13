@@ -7,7 +7,87 @@ document.querySelectorAll('[data-device]').forEach(button=>button.addEventListen
 const panels={overview:'<div class="metrics"><div class="metric"><small>ลูกค้า</small><b>24</b></div><div class="metric"><small>งานติดตาม</small><b>06</b></div><div class="metric"><small>นัดหมาย</small><b>08</b></div></div><h4 class="demo-subtitle">ภาพรวมการติดต่อ</h4><div class="chart"><div style="height:35%"><span>จ.</span></div><div style="height:61%"><span>อ.</span></div><div style="height:45%"><span>พ.</span></div><div style="height:76%"><span>พฤ.</span></div><div style="height:57%"><span>ศ.</span></div><div style="height:93%"><span>ส.</span></div><div style="height:65%"><span>อา.</span></div></div>',customers:'<h4 class="demo-subtitle">รายชื่อลูกค้า</h4><table class="demo-table"><thead><tr><th>ลูกค้า</th><th>งานที่สนใจ</th><th>สถานะ</th></tr></thead><tbody><tr><td>ลูกค้า A</td><td>บริการ A</td><td><span class="status">นัดหมายแล้ว</span></td></tr><tr><td>ลูกค้า B</td><td>บริการ B</td><td><span class="status">รอติดต่อ</span></td></tr><tr><td>ลูกค้า C</td><td>บริการ A</td><td><span class="status">ติดตามผล</span></td></tr></tbody></table>',followup:'<h4 class="demo-subtitle">งานที่ต้องติดตาม</h4><div class="task"><span>01</span><div>ติดต่อลูกค้า A<small>ยืนยันข้อมูลก่อนนัดหมาย</small></div></div><div class="task"><span>02</span><div>ส่งรายละเอียดบริการ<small>ลูกค้า B</small></div></div><div class="task"><span>03</span><div>ติดตามหลังรับบริการ<small>ลูกค้า C</small></div></div>'};
 function selectPanel(button){document.querySelectorAll('[data-panel]').forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.tabIndex=b===button?0:-1;b.id=`panel-tab-${b.dataset.panel}`});document.getElementById('dashboard-content').innerHTML=panels[button.dataset.panel];document.getElementById('dashboard-content').setAttribute('aria-labelledby',button.id)}document.querySelectorAll('[data-panel]').forEach(button=>button.addEventListener('click',()=>selectPanel(button)));selectPanel(document.querySelector('[data-panel="overview"]'));keyboardTabs('[data-panel]',selectPanel);
 document.querySelectorAll('.choose-package').forEach(link=>link.addEventListener('click',()=>{document.getElementById('package-select').value=link.dataset.package}));
-const form=document.getElementById('brief-form');form.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(form);const brief=['รายละเอียดงานเว็บไซต์ — SUMO WEB',`ชื่อธุรกิจ: ${String(data.get('business')).trim()}`,`ประเภทธุรกิจ: ${data.get('type')}`,`จังหวัด: ${String(data.get('province')).trim()||'ยังไม่ระบุ'}`,`บริการที่สนใจ: ${data.get('package')}`,`ช่องทางติดต่อกลับ: ${String(data.get('reply')).trim()||'ยังไม่ระบุ'}`,`สิ่งที่ต้องการ: ${String(data.get('details')).trim()||'ขอปรึกษารายละเอียดเพิ่มเติม'}`].join('\n');document.getElementById('brief-text').value=brief;document.getElementById('brief-output').hidden=false;document.getElementById('brief-status').textContent='พร้อมส่งแล้ว: กดส่งอีเมลเพื่อเปิดแอปพร้อมข้อความ หรือคัดลอกและเปิด LINE เพื่อนำข้อความไปส่งเอง';document.getElementById('brief-output').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})});
+
+const LEAD_API='https://jeqbyhzbpivscsduwkcj.supabase.co/functions/v1/submit-lead';
+// Supabase legacy anon JWT: a PUBLIC browser key, not the secret service-role key.
+const LEAD_PUBLIC_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplcWJ5aHpicGl2c2NzZHV3a2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5MTEzODIsImV4cCI6MjEwNzQ4NzM4Mn0.DFS66XJ_eKtyUh9LB5p3iRrE-9HpfR5GkNMcIVuuq8Q';
+const form=document.getElementById('brief-form');
+const briefSubmitButton=document.getElementById('brief-submit');
+document.getElementById('lead-privacy-open').addEventListener('click',()=>document.getElementById('privacy-dialog').showModal());
+form.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!form.reportValidity()||briefSubmitButton.disabled)return;
+  const data=new FormData(form);
+  const business=String(data.get('business')||'').trim();
+  const type=String(data.get('type')||'').trim();
+  const province=String(data.get('province')||'').trim();
+  const packageName=String(data.get('package')||'').trim();
+  const details=String(data.get('details')||'').trim();
+  const reply=String(data.get('reply')||'').trim();
+  const brief=[
+    'รายละเอียดงานเว็บไซต์ — SUMO WEB',
+    'ชื่อธุรกิจ: '+business,
+    'ประเภทธุรกิจ: '+type,
+    'จังหวัด: '+(province||'ยังไม่ระบุ'),
+    'บริการที่สนใจ: '+packageName,
+    'ช่องทางติดต่อกลับ: '+reply,
+    'สิ่งที่ต้องการ: '+(details||'ขอปรึกษารายละเอียดเพิ่มเติม')
+  ].join('\n');
+  document.getElementById('brief-text').value=brief;
+  document.getElementById('brief-output').hidden=false;
+  const status=document.getElementById('brief-status');
+  status.classList.remove('lead-save-ok','lead-save-error');
+  status.textContent='กำลังส่งคำขอและบันทึกข้อมูล...';
+  const oldButtonText=briefSubmitButton.textContent;
+  briefSubmitButton.disabled=true;
+  briefSubmitButton.textContent='กำลังส่งข้อมูล...';
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),15000);
+  try{
+    const response=await fetch(LEAD_API,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':LEAD_PUBLIC_ANON_KEY,
+        'Authorization':'Bearer '+LEAD_PUBLIC_ANON_KEY
+      },
+      signal:controller.signal,
+      body:JSON.stringify({
+        business_name:business,
+        business_type:type,
+        province:province,
+        service_interest:packageName,
+        project_details:details,
+        contact_channel:reply,
+        website_url:String(data.get('website_url')||''),
+        consent:data.get('consent')==='on'
+      })
+    });
+    const payload=await response.json().catch(()=>({}));
+    if(response.ok&&payload.ok===true){
+      status.classList.add('lead-save-ok');
+      status.textContent='✓ บันทึกคำขอสำเร็จแล้วค่ะ SUMO WEB ได้รับรายละเอียดของคุณแล้ว และจะติดต่อกลับผ่านช่องทางที่ระบุ';
+    }else{
+      status.classList.add('lead-save-error');
+      status.textContent=response.status===429
+        ?'ส่งคำขอจากการเชื่อมต่อนี้ถี่เกินไป กรุณารอสักครู่ หรือติดต่อทาง LINE/อีเมลด้านล่าง'
+        :'ยังบันทึกลงระบบไม่ได้ค่ะ กรุณาใช้ปุ่มส่งทางอีเมลหรือ LINE ด้านล่างแทนเพื่อไม่ให้คำขอสูญหาย';
+    }
+  }catch(error){
+    status.classList.add('lead-save-error');
+    status.textContent=error&&error.name==='AbortError'
+      ?'การเชื่อมต่อใช้เวลานานเกินไป ยังยืนยันว่าบันทึกสำเร็จไม่ได้ กรุณาติดต่อผ่าน LINE/อีเมล หรือรอสักครู่แล้วตรวจสอบอีกครั้ง'
+      :'ไม่สามารถติดต่อระบบรับคำขอได้ค่ะ ข้อมูลยังอยู่ด้านล่าง สามารถส่งทาง LINE หรืออีเมลแทนได้';
+  }finally{
+    clearTimeout(timer);
+    briefSubmitButton.disabled=false;
+    briefSubmitButton.textContent=oldButtonText;
+    document.getElementById('brief-output').scrollIntoView({
+      behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
+      block:'nearest'
+    });
+  }
+});
 // Confirmed business channels. Email opens a draft; the visitor must explicitly press Send.
 document.getElementById('email-brief').addEventListener('click',()=>{
   const message=document.getElementById('brief-text').value;
