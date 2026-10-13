@@ -229,7 +229,7 @@
 .discover-explainer-heading h3 span{color:#266ce8}
 .discover-explainer-heading>p{color:#62738e;font-size:12.5px;line-height:1.8;max-width:875px}
 .discover-explainer-heading>p strong{color:#274f88}
-.discover-showcase{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:21px;align-items:start}
+.discover-showcase{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:25px;align-items:start}
 .discover-website-column,.discover-search-column{min-width:0}
 .discover-column-label{display:flex;align-items:center;gap:7px;color:#637b9e;font-size:10.5px;font-weight:750;letter-spacing:.015em;margin:0 0 11px}
 .discover-label-dot{display:inline-block;flex:none;width:7px;height:7px;border-radius:50%;background:#3578eb;box-shadow:0 0 0 4px #e5efff}
@@ -283,7 +283,7 @@
 .discover-fineprint p strong{color:#436389}
 @media(max-width:1050px){
  .discover-explainer{padding:24px 22px 19px}
- .discover-showcase{gap:14px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .discover-showcase{gap:17px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
  .discover-navlinks{gap:7px}
  .discover-brand{font-size:14px}
  .discover-webnav{padding:9px 12px}
@@ -293,7 +293,7 @@
 }
 @media(max-width:840px){
  .discover-explainer{margin-top:27px}
- .discover-showcase{grid-template-columns:1fr;gap:24px}
+ .discover-showcase{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:16px}
  .discover-explainer-heading h3{font-size:clamp(23px,4vw,31px)}
  .discover-website-column{width:100%;max-width:690px;margin:auto}
  .discover-search-column{width:100%;max-width:690px;margin:auto}
@@ -308,7 +308,7 @@
  .discover-explainer-heading h3 br{display:none}
  .discover-explainer-heading h3 span{display:block;margin-top:2px}
  .discover-explainer-heading>p{font-size:11px;line-height:1.75}
- .discover-showcase{gap:20px}
+ .discover-showcase{grid-template-columns:1fr;gap:17px}
  .discover-column-label{font-size:10px;margin-bottom:9px}
  .discover-webframe{border-radius:11px}
  .discover-browser-bar{height:25px;padding:0 8px}
@@ -345,15 +345,15 @@
 @media(prefers-reduced-motion:reduce){.discover-explainer *{transition:none!important}}
 
 /* Approved original concept illustration on the left; answer cards remain native, editable text. */
-.discover-concept-figure{display:block;position:relative;margin:0;border:1px solid #dce6f3;border-radius:15px;overflow:hidden;background:#f7f9ff;box-shadow:0 13px 31px rgba(43,81,135,.11)}
-.discover-concept-img{display:block;width:100%;height:auto;aspect-ratio:994/845;object-fit:contain}
+.discover-concept-figure{display:block;position:relative;width:100%;max-width:380px;margin:0 auto;border:1px solid #dce6f3;border-radius:15px;overflow:hidden;background:#f7f9ff;box-shadow:0 13px 31px rgba(43,81,135,.11)}
+.discover-concept-img{display:block;width:100%;height:auto;max-height:324px;aspect-ratio:994/845;object-fit:contain}
 .discover-visual-hint{max-width:540px;color:#6b7c94;font-size:11px;line-height:1.75;margin:11px 0 1px}
 .discover-concept-figure:hover{border-color:#becfee}
 @media(max-width:840px){
- .discover-concept-figure{max-width:690px}
+ .discover-concept-figure{max-width:340px}
  .discover-visual-hint{font-size:11.5px}
 }
 @media(max-width:610px){
- .discover-concept-figure{border-radius:11px}
+ .discover-concept-figure{max-width:310px;border-radius:11px}
  .discover-visual-hint{font-size:10.5px;line-height:1.7;margin:9px 0 2px}
 }
