@@ -12,6 +12,33 @@ const LEAD_API='https://jeqbyhzbpivscsduwkcj.supabase.co/functions/v1/submit-lea
 // Supabase legacy anon JWT: a PUBLIC browser key, not the secret service-role key.
 const LEAD_PUBLIC_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplcWJ5aHpicGl2c2NzZHV3a2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5MTEzODIsImV4cCI6MjEwNzQ4NzM4Mn0.DFS66XJ_eKtyUh9LB5p3iRrE-9HpfR5GkNMcIVuuq8Q';
 const form=document.getElementById('brief-form');
+/* Pre-fill public project scope from the independent pricing page.
+   These URL parameters contain package names/estimates only, never customer data. */
+(()=>{
+  const query=new URLSearchParams(location.search);
+  const requested=(query.get('package')||'').trim().slice(0,90);
+  const extras=(query.get('addons')||'').trim().slice(0,950);
+  const care=(query.get('care')||'').trim().slice(0,100);
+  const start=(query.get('starting')||'').trim();
+  if(!requested&&!extras&&!care)return;
+  const picker=document.getElementById('package-select');
+  const matching=[...picker.options].find(o=>o.value===requested);
+  if(matching)picker.value=matching.value;
+  const lines=[];
+  if(extras)lines.push('บริการเสริมที่สนใจ: '+extras);
+  if(care)lines.push('แพ็กเกจดูแลต่อเนื่องที่สนใจ: '+care);
+  if(/^[0-9]{1,8}$/.test(start))lines.push('งบเริ่มต้นที่ระบบแสดง (ยังไม่ใช่ราคายืนยัน): '+Number(start).toLocaleString('th-TH')+' บาท');
+  const details=form.elements.namedItem('details');
+  if(details&&lines.length){
+    details.value=lines.join('\n');
+    const note=document.createElement('p');
+    note.className='price-selection-hint';
+    note.textContent='✓ นำแพ็กเกจและบริการเสริมที่เลือกจากหน้าราคาเข้ามาให้แล้ว สามารถเพิ่มรายละเอียดได้ก่อนส่ง';
+    const label=details.closest('label');
+    if(label)label.parentNode.insertBefore(note,label);
+  }
+})();
+
 const briefSubmitButton=document.getElementById('brief-submit');
 document.getElementById('lead-privacy-open').addEventListener('click',()=>document.getElementById('privacy-dialog').showModal());
 form.addEventListener('submit',async event=>{
