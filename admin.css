@@ -1,0 +1,76 @@
+/* SUMOWEB private admin interface, shown only after clicking the header logo. */
+#sumoweb-admin-dialog{width:min(1060px,calc(100vw - 24px));max-width:1060px;max-height:min(92dvh,1050px);padding:0;border:1px solid #dce5f2;border-radius:18px;box-shadow:0 35px 100px #081d4177;background:#f7f9fd;color:#172640;overflow:auto}
+#sumoweb-admin-dialog::backdrop{background:rgba(4,16,40,.78);backdrop-filter:blur(5px)}
+.sa-header{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 22px;background:#fff;border-bottom:1px solid #e3e9f4}
+.sa-header h2{font-size:19px;margin:0;color:#18315b}
+.sa-header p{margin:2px 0 0;font-size:10px;color:#798aa6}
+.sa-header-actions{display:flex;align-items:center;gap:8px}
+.sa-quiet-btn{font:600 11px/1.3 var(--font);border:1px solid #dce4f1;background:#fff;border-radius:8px;color:#56718f;padding:7px 10px}
+.sa-quiet-btn:hover{background:#edf3ff}
+.sa-main{padding:22px}
+.sa-login{width:min(390px,100%);margin:32px auto 42px;text-align:center;padding:24px;border:1px solid #e3eaf5;background:#fff;border-radius:14px}
+.sa-login h3{font-size:19px;margin:0 0 4px}
+.sa-login>p{font-size:11px;margin:0 0 18px}
+.sa-login label{text-align:left;display:block;font-size:11px;font-weight:700;margin:0 0 8px}
+.sa-login input{width:100%;padding:12px;font-size:22px;letter-spacing:.28em;text-align:center;border:1px solid #d8e1ef;border-radius:9px;margin:0 0 12px}
+.sa-primary-btn{background:#245fe4;color:#fff;border:0;border-radius:9px;padding:11px 16px;font:700 12px var(--font);cursor:pointer}
+.sa-primary-btn:hover{background:#174bc2}
+.sa-primary-btn:disabled{opacity:.6;cursor:wait}
+.sa-login .sa-primary-btn{width:100%}
+.sa-login .sa-error{margin-top:12px;color:#b03f3f;font-size:11px;min-height:18px}
+.sa-help{display:block;margin-top:11px;font-size:10px;color:#8794aa}
+.sa-tabs{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:17px}
+.sa-tab{border:1px solid #d9e2ef;background:#fff;color:#516989;border-radius:8px;padding:9px 13px;font:700 12px var(--font)}
+.sa-tab[aria-selected="true"]{background:#245fe4;border-color:#245fe4;color:#fff}
+.sa-section[hidden],.sa-login[hidden],.sa-panel[hidden]{display:none!important}
+.sa-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 16px}
+.sa-stat{background:#fff;border:1px solid #e3eaf4;border-radius:12px;padding:15px 13px;min-width:0}
+.sa-stat small{font-size:10px;color:#7588a3;display:block}
+.sa-stat strong{font:800 27px/1.4 var(--sans);color:#1b4cb4;display:block}
+.sa-card{background:#fff;border:1px solid #e3e9f3;border-radius:12px;padding:17px;margin-bottom:16px}
+.sa-card-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.sa-card-title h3{font-size:13px;color:#243b5c;margin:0}
+.sa-subtle{font-size:10px;color:#7e91ac;line-height:1.6}
+.sa-chart{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));align-items:end;gap:7px;height:125px;border-bottom:1px solid #e0e9f5}
+.sa-bar-col{height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:3px;min-width:0}
+.sa-bar-count{font-size:9px;color:#52709b}
+.sa-bar{width:min(100%,34px);min-height:3px;background:linear-gradient(180deg,#5891ff,#2964df);border-radius:5px 5px 0 0}
+.sa-bar-date{margin-top:2px;font-size:8px;color:#93a0b4;white-space:nowrap}
+.sa-table-scroll{overflow-x:auto}
+.sa-table{border-collapse:collapse;width:100%;min-width:580px;font-size:11px}
+.sa-table th,.sa-table td{padding:9px 8px;border-bottom:1px solid #edf1f8;vertical-align:top;text-align:left;color:#45617e;overflow-wrap:anywhere}
+.sa-table th{color:#69809e;font-size:10px;white-space:nowrap}
+.sa-table tr:last-child td{border-bottom:0}
+.sa-info{background:#eef4ff;border-radius:9px;padding:10px 12px;font-size:10.5px;color:#617895;line-height:1.7;margin:0 0 15px}
+.sa-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:13px}
+.sa-toolbar h3{font-size:15px}
+.sa-toolbar select{border:1px solid #d6e1f0;border-radius:8px;padding:7px;font-size:11px;background:#fff;color:#344b68}
+.sa-lead-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sa-lead{background:#fff;border:1px solid #dde6f2;border-radius:12px;padding:16px;min-width:0;overflow-wrap:anywhere}
+.sa-lead-top{display:flex;align-items:start;justify-content:space-between;gap:10px}
+.sa-lead h4{font-size:14px;line-height:1.45}
+.sa-lead time{font-size:10px;color:#8193ac;white-space:nowrap}
+.sa-lead-line{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;font-size:11px;margin:6px 0;color:#506782}
+.sa-lead-line b{color:#223a5f}
+.sa-lead-details{padding:10px 11px;border-radius:8px;background:#f3f7fd;font-size:11px;color:#465e80;white-space:pre-wrap;margin:8px 0 11px}
+.sa-lead-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:8px;margin-top:8px}
+.sa-lead-field{display:flex;flex-direction:column;gap:5px;font-size:10px;font-weight:700;color:#627895}
+.sa-lead-field select,.sa-lead-field textarea{width:100%;min-width:0;border:1px solid #d8e2f0;border-radius:7px;padding:8px;color:#34475e;font:500 11px var(--font);background:#fff}
+.sa-lead-field textarea{resize:vertical;min-height:66px}
+.sa-lead-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.sa-lead-actions .sa-primary-btn{padding:8px 11px;font-size:11px}
+.sa-danger-btn{border:0;background:none;font:700 10px var(--font);color:#bc6262;padding:6px 5px}
+.sa-empty{text-align:center;padding:32px;color:#7b8aa1;font-size:12px}
+#sa-global-status{font-size:11px;margin:10px 0;color:#516a8a}
+@media(max-width:700px){
+ #sumoweb-admin-dialog{max-height:96dvh;width:calc(100vw - 12px);border-radius:12px}
+ .sa-header{padding:12px 14px}.sa-header h2{font-size:16px}
+ .sa-main{padding:13px}
+ .sa-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .sa-stat{padding:11px}.sa-stat strong{font-size:23px}
+ .sa-card{padding:12px}
+ .sa-chart{gap:3px}.sa-bar-date{font-size:7px}
+ .sa-lead-list{grid-template-columns:1fr}
+ .sa-login{margin:20px auto;padding:18px}
+}
+@media(max-width:370px){.sa-lead-grid{grid-template-columns:1fr}.sa-chart{gap:1px}.sa-bar-date{font-size:6px}}
