@@ -28,6 +28,7 @@
   const planSelect=el('quote-plan-select');
   const careSelect=el('quote-care-select');
   const checks=[...document.querySelectorAll('.addon-check')];
+  let explicitPlanSelected=false;
 
   function render(){
     const plan=plans[planSelect.value]||plans.lite;
@@ -51,6 +52,8 @@
     el('quote-addon-price').textContent=fmt(addonTotal)+(addonTotal?'+':'');
     el('quote-total').textContent=fmt(total)+(planSelect.value==='custom'||selected.length?'+':'');
     el('quote-monthly-price').textContent=care.price?fmt(care.price)+'/เดือน'+(careSelect.value==='system'?'+':''):'ยังไม่เลือก';
+    const addonsNotice=document.getElementById('addon-selected-count');
+    if(addonsNotice)addonsNotice.textContent=selected.length?'เลือกแล้ว '+selected.length+' รายการ':'แอดออนเป็นทางเลือก';
     el('quote-selected-addons').textContent=selected.length
       ?'บริการเสริมที่สนใจ: '+selected.map(c=>c.dataset.title).join(' · ')
       :'ยังไม่ได้เลือกแอดออน';
@@ -66,6 +69,7 @@
 
   function selectPlan(key){
     if(!plans[key])return;
+    explicitPlanSelected=key!=='none';
     planSelect.value=key;
     render();
     el('estimate').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
@@ -74,12 +78,12 @@
     if(!cares[key])return;
     careSelect.value=key;
     // A care-only enquiry should not accidentally include the default website package.
-    planSelect.value='none';
+    if(!explicitPlanSelected)planSelect.value='none';
     render();
     el('estimate').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
   }
-  planSelect.addEventListener('change',render);
-  careSelect.addEventListener('change',render);
+  planSelect.addEventListener('change',()=>{explicitPlanSelected=planSelect.value!=='none';render()});
+  careSelect.addEventListener('change',()=>{if(!explicitPlanSelected&&careSelect.value!=='none')planSelect.value='none';render()});
   checks.forEach(c=>c.addEventListener('change',render));
   document.querySelectorAll('[data-plan-pick]').forEach(button=>{
     button.addEventListener('click',()=>selectPlan(button.dataset.planPick));
@@ -88,7 +92,7 @@
     button.addEventListener('click',()=>selectCare(button.dataset.carePick));
   });
   el('quote-reset').addEventListener('click',()=>{
-    planSelect.value='lite';careSelect.value='none';
+    planSelect.value='lite';careSelect.value='none';explicitPlanSelected=false;
     checks.forEach(c=>c.checked=false);
     render();
   });
