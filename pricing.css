@@ -157,9 +157,12 @@
 }
 @media(max-width:860px){
  .pricing-page .desktop-nav,.pricing-page .header-actions{display:none}
- .pricing-page .mobile-menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px}
+ .pricing-page .mobile-menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:41px;height:41px;border:1px solid #dce5f1;border-radius:9px;background:#fff;margin-left:auto}
+ .pricing-page .mobile-menu-toggle span{display:block;width:19px;height:2px;background:#182a48;border-radius:2px}
  .pricing-page .mobile-nav[hidden]{display:none!important}
- .pricing-page .mobile-nav:not([hidden]){display:flex;flex-direction:column;gap:8px}
+ .pricing-page .mobile-nav:not([hidden]){display:flex;position:absolute;left:0;right:0;top:68px;z-index:81;flex-direction:column;gap:0;padding:12px 20px 18px;background:#fff;box-shadow:0 18px 28px rgba(20,40,80,.14);border-bottom:1px solid #e6ecf6}
+ .pricing-page .mobile-nav a{display:block;padding:10px 5px;border-bottom:1px solid #eef1f8;color:#22395c;font-size:12px;font-weight:700}
+ .pricing-page .mobile-nav a.button{margin-top:10px;color:#fff;text-align:center}
  .pricing-page .container{width:min(100% - 36px,1160px)}
  .plans-explain{grid-template-columns:1fr;gap:6px}
  .pricing-plan-grid{grid-template-columns:1fr}
@@ -206,3 +209,5 @@
  .pricing-hero-meta b{display:none}
 }
 @media(prefers-reduced-motion:reduce){.plan-more summary span,.addon-chevron,.pricing-term summary span{transition:none}}
+
+@media(max-width:720px){.pricing-page .mobile-nav:not([hidden]){top:60px}}
