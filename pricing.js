@@ -109,7 +109,7 @@
   });
   menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
-  window.matchMedia('(min-width:821px)').addEventListener('change',e=>{if(e.matches)closeMenu()});
+  window.matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)closeMenu()});
 
   // Track anonymous pricing-page visits without requesting contact details.
   (async()=>{
