@@ -536,3 +536,13 @@
   .brain-discovery-result .brain-endcap p{font-size:12px;line-height:1.8}
   .brain-discovery-result .brain-endcap .button{width:100%;font-size:12px;white-space:normal;text-align:center;min-height:46px}
 }
+
+/* Tablet portrait and touch-screen tablet landscape need their own image cap. */
+@media(min-width:611px) and (max-width:970px),
+      (min-width:971px) and (max-width:1366px) and (pointer:coarse){
+  .brain-discovery-result>.discover-explainer.discover-image-only{
+    width:min(100%,360px,48vh);
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
