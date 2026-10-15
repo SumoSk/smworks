@@ -13,3 +13,14 @@ h1,h2,h3,p{margin:0}h1,h2{line-height:1.25;letter-spacing:-.035em;font-weight:50
 .site-header .logo{font-size:clamp(17px,2vw,21px);letter-spacing:.015em;line-height:1.2;flex-shrink:0}
 .footer strong{letter-spacing:.015em}
 @media(max-width:600px){.site-header{gap:10px}.site-header .logo{font-size:17px}}
+
+/* Shared approved SM Works logo with each example business name. */
+.site-header .logo{display:block;letter-spacing:0}
+.demo-brand-line{display:flex;align-items:center;gap:9px}
+.site-header .logo .demo-brand-wordmark{display:block;width:158px;height:auto;object-fit:contain}
+.demo-brand-type{font:500 12px/1.2 "DM Sans",sans-serif;letter-spacing:.015em;color:#102b55}
+.site-header .logo small{margin-top:7px}
+.demo-footer-brand{display:flex;align-items:center;gap:10px}
+.demo-footer-brand img{display:block;width:142px;height:auto;object-fit:contain}
+.demo-footer-brand>span{margin:0;font-size:11px;color:#102b55}
+@media(max-width:650px){.site-header .logo .demo-brand-wordmark{width:136px}.demo-brand-line{gap:7px}.demo-brand-type{font-size:10px}.site-header .logo small{font-size:7px;margin-top:5px}}
