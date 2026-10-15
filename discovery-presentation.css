@@ -483,3 +483,25 @@
   .discover-fineprint{margin-top:12px}
 }
 
+/* Keep the discovery concept as one full-width image, without surrounding copy or cards. */
+.discover-explainer.discover-image-only{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:28px auto 24px;
+  padding:0;
+  overflow:hidden;
+  border:0;
+  border-radius:16px;
+  background:transparent;
+  box-shadow:none;
+}
+.discover-image-only .discover-concept-img{
+  display:block;
+  width:100%;
+  max-width:none;
+  height:auto;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:contain;
+}
