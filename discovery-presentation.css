@@ -505,3 +505,34 @@
   aspect-ratio:auto;
   object-fit:contain;
 }
+
+/* Keep the mobile stack; use a compact illustration beside the existing CTA on desktop. */
+.discover-image-open{display:block;border-radius:inherit;cursor:zoom-in}
+.discover-image-open:focus-visible{outline:3px solid #2864ec;outline-offset:-3px}
+@media(min-width:971px){
+  .brain-discovery-result{
+    display:grid;
+    grid-template-columns:minmax(0,480px) minmax(0,1fr);
+    align-items:center;
+    gap:clamp(24px,4vw,48px);
+    width:min(1040px,100%);
+    margin:28px auto 24px;
+  }
+  .brain-discovery-result>.discover-explainer.discover-image-only{
+    width:min(100%,480px,56vh);
+    margin:0;
+    justify-self:center;
+  }
+  .brain-discovery-result>.brain-endcap{
+    flex-direction:column;
+    align-items:stretch;
+    gap:20px;
+    padding:28px;
+    margin:0;
+    min-width:0;
+  }
+  .brain-discovery-result .brain-endcap-eyebrow{font-size:11px;line-height:1.7}
+  .brain-discovery-result .brain-endcap h3{font-size:clamp(19px,1.8vw,23px);line-height:1.55;margin:7px 0}
+  .brain-discovery-result .brain-endcap p{font-size:12px;line-height:1.8}
+  .brain-discovery-result .brain-endcap .button{width:100%;font-size:12px;white-space:normal;text-align:center;min-height:46px}
+}
