@@ -1,4 +1,4 @@
-/* SUMO WEB / Photo-led editorial direction.
+/* SM Works / Photo-led editorial direction.
  * Hero photography, original blue atmospheric SVGs, immersive portfolio cards.
  * Isolated from functional components: preview controls, form and dashboard remain intact.
  */
@@ -280,7 +280,7 @@ body{background:#fff}
   .real-work--case .real-work-open{grid-column:1/-1;justify-self:stretch;text-align:center}
 }
 
-/* Confirmed SUMO WEB contact methods and frictionless quote actions. */
+/* Confirmed SM Works contact methods and frictionless quote actions. */
 .contact-methods{display:grid;grid-template-columns:1fr;gap:9px;margin-top:22px;max-width:405px}
 .contact-method{min-width:0;display:grid;grid-template-columns:72px minmax(0,1fr);grid-template-areas:"kind value" "kind hint";align-items:center;column-gap:9px;row-gap:2px;padding:12px 14px;background:rgba(255,255,255,.085);border:1px solid rgba(226,236,255,.26);border-radius:9px;color:#fff;text-decoration:none;transition:background .2s,border-color .2s}
 .contact-method:hover,.contact-method:focus-visible{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.65)}

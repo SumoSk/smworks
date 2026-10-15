@@ -1,6 +1,6 @@
 'use strict';
-const demos={clinic:{name:'RADIANCE',description:'คลินิกความงาม: นางแบบสวย ภาพบริการ และหน้าเว็บสไตล์หรูหราสมจริง'},business:{name:'FORMA STUDIO',description:'ธุรกิจบริการ: ดีไซน์ภาพใหญ่แบบสตูดิโอออกแบบพร้อมแสดงผลงานและบริการ'},wellness:{name:'SERENA WELLNESS',description:'สปาและเวลเนส: สื่อสารบรรยากาศด้วยภาพถ่ายจริงและแนะนำประสบการณ์ที่น่าจดจำ'},product:{name:'LUMIVELLE',description:'แบรนด์สินค้า: นางแบบ ภาพผลิตภัณฑ์ และเลย์เอาต์หน้าร้านสกินแคร์สไตล์พรีเมียม'}};
-function selectDemo(button){const key=button.dataset.demo;document.querySelectorAll('[data-demo]').forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.tabIndex=b===button?0:-1});const iframe=document.getElementById('demo-iframe');iframe.src=`examples/${key}.html?embed=1`;iframe.title=`ตัวอย่างเว็บไซต์ ${demos[key].name}`;document.getElementById('demo-domain').textContent=demos[key].name;document.getElementById('demo-open').href=`examples/${key}.html`;document.getElementById('demo-description').textContent=demos[key].description;document.getElementById('preview-panel').setAttribute('aria-labelledby',button.id||`tab-${key}`)}
+const demos={clinic:{name:'SM Works Clinic',description:'คลินิกความงาม: นางแบบสวย ภาพบริการ และหน้าเว็บสไตล์หรูหราสมจริง'},business:{name:'SM Works Studio',description:'ธุรกิจบริการ: ดีไซน์ภาพใหญ่แบบสตูดิโอออกแบบพร้อมแสดงผลงานและบริการ'},wellness:{name:'SM Works Wellness',description:'สปาและเวลเนส: สื่อสารบรรยากาศด้วยภาพถ่ายจริงและแนะนำประสบการณ์ที่น่าจดจำ'},product:{name:'SM Works Skincare',description:'แบรนด์สินค้า: นางแบบ ภาพผลิตภัณฑ์ และเลย์เอาต์หน้าร้านสกินแคร์สไตล์พรีเมียม'}};
+function selectDemo(button){const key=button.dataset.demo;document.querySelectorAll('[data-demo]').forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.tabIndex=b===button?0:-1});const iframe=document.getElementById('demo-iframe');iframe.src=`examples/${key}.html?embed=1&v=smworks-20261016`;iframe.title=`ตัวอย่างเว็บไซต์ ${demos[key].name}`;document.getElementById('demo-domain').textContent=demos[key].name;document.getElementById('demo-open').href=`examples/${key}.html?v=smworks-20261016`;document.getElementById('demo-description').textContent=demos[key].description;document.getElementById('preview-panel').setAttribute('aria-labelledby',button.id||`tab-${key}`)}
 function keyboardTabs(selector,onSelect){const buttons=[...document.querySelectorAll(selector)];buttons.forEach((button,index)=>{button.tabIndex=button.getAttribute('aria-selected')==='true'?0:-1;button.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%buttons.length;else if(event.key==='ArrowLeft')next=(index-1+buttons.length)%buttons.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=buttons.length-1;else return;event.preventDefault();buttons[next].focus();onSelect(buttons[next])})})}
 document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>selectDemo(button)));keyboardTabs('[data-demo]',selectDemo);
 document.querySelectorAll('[data-device]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-device]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.getElementById('preview-frame').classList.toggle('mobile',button.dataset.device==='mobile')}));
@@ -65,7 +65,7 @@ form.addEventListener('submit',async event=>{
   const details=String(data.get('details')||'').trim();
   const reply=String(data.get('reply')||'').trim();
   const brief=[
-    'รายละเอียดงานเว็บไซต์ — SUMO WEB',
+    'รายละเอียดงานเว็บไซต์ — SM Works',
     'ชื่อธุรกิจ: '+business,
     'ประเภทธุรกิจ: '+type,
     'จังหวัด: '+(province||'ยังไม่ระบุ'),
@@ -105,7 +105,7 @@ form.addEventListener('submit',async event=>{
     const payload=await response.json().catch(()=>({}));
     if(response.ok&&payload.ok===true){
       status.classList.add('lead-save-ok');
-      status.textContent='✓ บันทึกคำขอสำเร็จแล้วค่ะ SUMO WEB ได้รับรายละเอียดของคุณแล้ว และจะติดต่อกลับผ่านช่องทางที่ระบุ';
+      status.textContent='✓ บันทึกคำขอสำเร็จแล้วค่ะ SM Works ได้รับรายละเอียดของคุณแล้ว และจะติดต่อกลับผ่านช่องทางที่ระบุ';
     }else{
       status.classList.add('lead-save-error');
       status.textContent=response.status===429
@@ -132,7 +132,7 @@ document.getElementById('email-brief').addEventListener('click',()=>{
   const message=document.getElementById('brief-text').value;
   const status=document.getElementById('brief-status');
   if(!message){status.textContent='กรุณาเตรียมรายละเอียดก่อน';return;}
-  const subject=encodeURIComponent('ขอประเมินเว็บไซต์ — SUMO WEB');
+  const subject=encodeURIComponent('ขอประเมินเว็บไซต์ — SM Works');
   const body=encodeURIComponent(message);
   status.textContent='กำลังเปิดแอปอีเมล กรุณาตรวจผู้รับและกดส่งด้วยตัวเอง';
   window.location.href='mailto:sumoskb@hotmail.com?subject='+subject+'&body='+body;
@@ -164,7 +164,7 @@ document.getElementById('share-brief').addEventListener('click',async()=>{
   if(!message){status.textContent='กรุณาเตรียมรายละเอียดก่อน';return;}
   if(typeof navigator.share==='function'){
     try{
-      await navigator.share({title:'รายละเอียดงานเว็บไซต์ — SUMO WEB',text:message});
+      await navigator.share({title:'รายละเอียดงานเว็บไซต์ — SM Works',text:message});
       status.textContent='ปิดเมนูแชร์แล้ว โปรดตรวจสอบในแอปที่เลือกว่าข้อความถูกส่งถึงผู้รับ';
     }catch(error){
       if(error&&error.name==='AbortError')status.textContent='ยกเลิกการแชร์แล้ว ข้อมูลยังไม่ได้ส่ง';
@@ -181,7 +181,7 @@ document.getElementById('share-brief').addEventListener('click',async()=>{
   }
 });
 document.getElementById('copy-brief').addEventListener('click',async()=>{const field=document.getElementById('brief-text');try{await navigator.clipboard.writeText(field.value);document.getElementById('brief-status').textContent='คัดลอกแล้ว พร้อมนำไปส่งผ่านช่องทางติดต่อของคุณ'}catch{field.focus();field.select();document.getElementById('brief-status').textContent='กรุณาคัดลอกข้อความที่เลือกไว้ หรือใช้ปุ่มดาวน์โหลดรายละเอียด'}});
-document.getElementById('download-brief').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob(['\ufeff',document.getElementById('brief-text').value],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='sumo-web-project-brief.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+document.getElementById('download-brief').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob(['\ufeff',document.getElementById('brief-text').value],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='sm-works-project-brief.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());document.getElementById('privacy-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const bounds=dialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)dialog.close()}});document.getElementById('year').textContent=new Date().getFullYear();
 
 
@@ -211,7 +211,7 @@ const dialog=document.getElementById('privacy-dialog');document.getElementById('
   window.matchMedia('(min-width: 721px)').addEventListener('change',event=>{if(event.matches)close();});
 })();
 
-// Scale the shared RADIANCE preview to its miniature browser width.
+// Scale the shared SM Works Clinic preview to its miniature browser width.
 // The page itself remains a single source of truth: examples/clinic.html.
 (() => {
   const viewport = document.querySelector('.brain-live-viewport');

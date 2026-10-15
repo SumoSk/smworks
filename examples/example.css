@@ -9,3 +9,7 @@ h1,h2,h3,p{margin:0}h1,h2{line-height:1.25;letter-spacing:-.035em;font-weight:50
 .embedded .demo-ribbon{display:none}.embedded .site-header{height:56px}.embedded .hero{min-height:485px}.embedded .hero-copy{padding-top:60px;padding-bottom:60px}.embedded .hero h1{font-size:clamp(30px,4.2vw,55px)}.embedded .site-header nav{font-size:10px}.embedded .hero-product .product-float{width:125px;height:140px}
 @media(max-width:650px){.embedded .hero{min-height:0;padding-top:220px}.embedded .hero-bg{height:220px}.embedded .hero-copy{padding:21px 17px 29px}.embedded .hero h1{font-size:clamp(26px,7.2vw,34px)}.embedded .hero-copy p{font-size:11px}.embedded .product-float{width:85px;height:90px;top:149px}.embedded .site-header{height:53px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* Longer SM Works business names stay readable in the shared navigation. */
+.site-header .logo{font-size:clamp(17px,2vw,21px);letter-spacing:.015em;line-height:1.2;flex-shrink:0}
+.footer strong{letter-spacing:.015em}
+@media(max-width:600px){.site-header{gap:10px}.site-header .logo{font-size:17px}}

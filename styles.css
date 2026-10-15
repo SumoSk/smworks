@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap');
-/* SUMO WEB / structured design system: a clean blue SaaS-inspired layout.
+/* SM Works / structured design system: a clean blue SaaS-inspired layout.
    Deliberately replaces accumulated overrides instead of adding another patch. */
 :root{
   --blue:#2764ee;--blue-hover:#174bcc;--navy:#152039;
@@ -313,7 +313,7 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
  html.js-effects .hero h1 .headline-line{opacity:1;transform:none}
 }
 
-/* SUMOWEB: private lead submission, discreet privacy notice, and success/error states. */
+/* SM Works: private lead submission, discreet privacy notice, and success/error states. */
 .contact form .lead-privacy-notice{display:flex;align-items:baseline;flex-wrap:wrap;gap:3px 7px;margin:9px 0 0;color:#7c8aa1;font-size:10.5px;line-height:1.65}
 .contact form .lead-privacy-link{border:0;background:transparent;padding:0;color:#235fc7;font-size:10.5px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .contact form #brief-submit[disabled]{cursor:wait;opacity:.67}
@@ -326,7 +326,7 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
  .contact form .lead-privacy-link{font-size:10px}
 }
 
-/* SUMO WEB homepage: concise public prices; full scopes live on pricing.html. */
+/* SM Works homepage: concise public prices; full scopes live on pricing.html. */
 .package-grid .home-price-overline{display:block;color:#4d7fce;font:800 9.5px/1.5 var(--sans);letter-spacing:1.1px;margin:0 0 6px}
 .package-grid .home-price-sub{font-size:11px;line-height:1.7;color:#62748e;min-height:59px;margin:4px 0 0}
 .package-grid .home-price-amount{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;margin:14px 0 2px;padding:12px 0;border-top:1px solid #e8edf6;border-bottom:1px solid #e8edf6}
@@ -351,7 +351,7 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
  .package-grid .home-price-amount strong{font-size:28px}
 }
 
-/* SUMOWEB homepage — simplified package comparison, no noisy cards or images. */
+/* SM Works homepage — simplified package comparison, no noisy cards or images. */
 .home-simple-plans{display:grid;grid-template-columns:minmax(0,1fr);gap:11px}
 .home-simple-plan{display:flex;align-items:center;gap:12px;min-width:0;padding:19px 19px;border:1px solid #dfe8f4;border-radius:11px;background:#fff;transition:border-color .2s,box-shadow .2s}
 .home-simple-plan:hover{border-color:#9bb9ec;box-shadow:0 9px 24px rgba(39,87,163,.07)}
@@ -384,3 +384,10 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
  .home-pricing-bottom{padding:15px}
  .home-pricing-bottom>.button{width:100%}
 }
+
+/* SM Works wordmark keeps the existing palette and compact header. */
+.brand>span.brand-wordmark{display:inline;color:var(--navy);margin-left:0;letter-spacing:-.45px}
+.brand-wordmark>span{color:var(--blue)}
+.mark{font:800 12px/1 var(--sans);letter-spacing:-.6px;padding:0}
+.dashboard-top .mark{font-size:10px}
+.footer .mark{font-size:11px}

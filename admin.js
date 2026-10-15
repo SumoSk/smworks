@@ -1,5 +1,5 @@
 'use strict';
-/* SUMOWEB admin: server-verified PIN; no password or privileged key is stored in page code. */
+/* SM Works admin: server-verified PIN; no password or privileged key is stored in page code. */
 (() => {
   const apiUrl='https://jeqbyhzbpivscsduwkcj.supabase.co/functions/v1/site-admin';
   const apiHeaders=()=>({
@@ -242,7 +242,7 @@
     });
     del.addEventListener('click',async()=>{
       if(!checkSession())return;
-      if(!confirm('ลบข้อมูลของ '+(lead.business_name||'ลูกค้ารายนี้')+' ถาวรจาก SUMOWEB หรือไม่?'))return;
+      if(!confirm('ลบข้อมูลของ '+(lead.business_name||'ลูกค้ารายนี้')+' ถาวรจาก SM Works หรือไม่?'))return;
       del.disabled=true;
       try{
         await request('lead_delete',{session_token:token,lead_id:lead.id});
