@@ -3,7 +3,7 @@
   const plans={
     lite:{name:'เว็บเริ่มต้น',enquiry:'One Page Lite',price:9900},
     landing:{name:'เว็บออกแบบเฉพาะแบรนด์',enquiry:'Signature Landing',price:19900},
-    business:{name:'เว็บธุรกิจหลายหน้า',enquiry:'Business Discover',price:32900},
+    business:{name:'เว็บธุรกิจครบชุด',enquiry:'Business Discover',price:32900},
     none:{name:'เฉพาะบริการเสริมหรือดูแลเว็บไซต์',enquiry:'เฉพาะบริการดูแลต่อเนื่อง',price:0}
   };
   const cares={
@@ -23,6 +23,7 @@
   const fmt=n=>'฿'+Number(n).toLocaleString('en-US');
   const planSelect=el('quote-plan-select');
   const careSelect=el('quote-care-select');
+  const layoutSelect=el('quote-layout-select');
   if(!planSelect||!careSelect)return;
   let quoteParams='';
   const checks=[...document.querySelectorAll('.addon-check')];
@@ -61,6 +62,8 @@
     if(selected.length)params.set('addons',selected.map(c=>c.dataset.title).join(' / '));
     if(care.price)params.set('care',care.name);
     const hasProject=planSelect.value!=='none';
+    const layouts={single:'เลื่อนดูส่วนต่าง ๆ ในหน้าเดียว',pages:'กดเมนูเปลี่ยนหน้าเพจ'};
+    if(hasProject&&layoutSelect&&layouts[layoutSelect.value])params.set('layout',layouts[layoutSelect.value]);
     if(hasProject||selected.length)params.set('starting',''+total);
     quoteParams=params.toString();
     el('quote-contact').href='#contact';
@@ -86,6 +89,7 @@
   planSelect.addEventListener('change',()=>{explicitPlanSelected=planSelect.value!=='none';render()});
   careSelect.addEventListener('change',()=>{if(!explicitPlanSelected&&careSelect.value!=='none')planSelect.value='none';render()});
   checks.forEach(c=>c.addEventListener('change',render));
+  if(layoutSelect)layoutSelect.addEventListener('change',render);
   document.querySelectorAll('[data-plan-pick]').forEach(button=>{
     button.addEventListener('click',()=>selectPlan(button.dataset.planPick));
   });
@@ -94,6 +98,7 @@
   });
   el('quote-reset').addEventListener('click',()=>{
     planSelect.value='lite';careSelect.value='none';explicitPlanSelected=false;
+    if(layoutSelect)layoutSelect.value='';
     checks.forEach(c=>c.checked=false);
     render();
   });

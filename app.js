@@ -18,12 +18,14 @@ function applyPricingSelection(query){
   const requested=(query.get('package')||'').trim().slice(0,90);
   const extras=(query.get('addons')||'').trim().slice(0,950);
   const care=(query.get('care')||'').trim().slice(0,100);
+  const layout=(query.get('layout')||'').trim().slice(0,160);
   const start=(query.get('starting')||'').trim();
-  if(!requested&&!extras&&!care)return;
+  if(!requested&&!extras&&!care&&!layout)return;
   const picker=document.getElementById('package-select');
   const matching=[...picker.options].find(o=>o.value===requested);
   if(matching)picker.value=matching.value;
   const lines=[];
+  if(layout)lines.push('รูปแบบเว็บไซต์ที่สนใจ: '+layout);
   if(extras)lines.push('บริการเสริมที่สนใจ: '+extras);
   if(care)lines.push('แพ็กเกจดูแลต่อเนื่องที่สนใจ: '+care);
   if(/^[0-9]{1,8}$/.test(start))lines.push('งบเริ่มต้นที่ระบบแสดง (ยังไม่ใช่ราคายืนยัน): '+Number(start).toLocaleString('th-TH')+' บาท');
