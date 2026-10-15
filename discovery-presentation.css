@@ -546,3 +546,8 @@
     margin-right:auto;
   }
 }
+
+/* End the discovery preview at its frame and pull the next section closer. */
+.brain-discovery{padding-bottom:12px}
+.brain-discovery .brain-visual{min-height:0;padding-bottom:0}
+.brain-discovery + .section.showcase{padding-top:16px}
