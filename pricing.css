@@ -240,3 +240,68 @@
 /* Final override for clear package rows on all screens. */
 @media(max-width:860px){.pricing-plan-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.price-line-main{padding:15px;gap:9px}.price-line-more summary{font-size:10px}}
+
+/* Three clear website choices; advanced services stay available on demand. */
+.price-line-identity h3{font-size:17px;line-height:1.55}
+.price-line-main{grid-template-columns:24px minmax(210px,1.4fr) minmax(180px,1.1fr) minmax(140px,.7fr) 136px}
+.price-line-scope small{line-height:1.75}
+.pricing-section-heading p{margin-bottom:0}
+.custom-service{margin-top:18px}
+.custom-overline{letter-spacing:0}
+.system-options,.addon-catalog,.care-options{margin-top:15px;border:1px solid #dce6f3;border-radius:12px;background:#fff;overflow:hidden}
+.system-options>summary,.addon-catalog>summary,.care-options>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;list-style:none;cursor:pointer;font-size:12px;font-weight:750;color:#345d94}
+.system-options>summary::-webkit-details-marker,.addon-catalog>summary::-webkit-details-marker,.care-options>summary::-webkit-details-marker{display:none}
+.system-options>summary:hover,.addon-catalog>summary:hover,.care-options>summary:hover{background:#f5f8fe}
+.system-options-body{padding:0 18px 18px}
+.system-options .price-line-main{grid-template-columns:minmax(190px,1.4fr) minmax(150px,1fr) minmax(130px,.7fr) 150px}
+.system-custom-detail{margin-top:15px;padding:17px;background:#f5f8fe;border-radius:9px}
+.system-custom-detail h4{font-size:14px;margin:0 0 8px}
+.system-custom-detail p{font-size:11px;line-height:1.8;margin:5px 0}
+.system-custom-detail a{display:inline-block;margin-top:7px;color:#245fc9;font-size:11px;font-weight:750}
+.addon-featured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.addon-featured .addon-row{grid-template-columns:19px minmax(0,1fr);padding:16px;border:1px solid #dce6f3;border-radius:11px;background:#fff;align-content:center}
+.addon-featured .addon-row strong{grid-column:2;max-width:none;text-align:left}
+.addon-featured .addon-name{font-size:12px;font-weight:700}
+.addon-catalog>summary span{margin-left:auto;font-size:10px;color:#7d90ab;font-weight:500}
+.addon-catalog .addon-groups{padding:0 14px 14px}
+.care-options{margin-top:0}
+.care-options .care-grid{padding:0 15px 15px;gap:10px}
+.care-options .care-card{padding:15px}
+.care-options .care-card p{min-height:0}
+.care-options .care-footnote{padding:0 18px 16px;margin:0}
+.quote-box select{font-size:16px}
+@media(max-width:1100px){
+ .price-line-main{grid-template-columns:24px minmax(180px,1.4fr) minmax(155px,1fr) minmax(130px,.7fr);gap:12px}
+ .price-line-actions{grid-column:2/-1;justify-self:stretch}
+ .price-line-actions .price-pick{width:100%}
+ .system-options .price-line-main{grid-template-columns:minmax(0,1fr) minmax(130px,.7fr)}
+ .system-options .price-line-identity{grid-column:1;grid-row:1}
+ .system-options .price-line-price{grid-column:2;grid-row:1}
+ .system-options .price-line-scope{grid-column:1/-1;grid-row:2;border:0;padding-left:0}
+ .system-options .price-line-actions{grid-column:1/-1;grid-row:3}
+}
+@media(max-width:730px){
+ .price-line-main{grid-template-columns:23px minmax(0,1fr) auto}
+ .price-line-identity h3{font-size:16px}
+ .addon-featured{grid-template-columns:1fr;gap:8px}
+ .addon-featured .addon-row{grid-template-columns:19px minmax(0,1fr) auto;padding:13px}
+ .addon-featured .addon-row strong{grid-column:3;font-size:10px;max-width:135px;text-align:right}
+ .system-options-body{padding:0 12px 12px}
+}
+@media(max-width:450px){
+ .price-line-main{grid-template-columns:20px minmax(0,1fr);padding:14px}
+ .price-line-price{grid-column:2;grid-row:2}
+ .price-line-scope{grid-column:2;grid-row:3}
+ .price-line-actions{grid-column:2;grid-row:4}
+ .price-line-more summary{padding:11px 14px;font-size:10.5px}
+ .addon-catalog>summary{flex-wrap:wrap}
+ .addon-catalog>summary span{margin-left:0}
+ .system-options .price-line-main{grid-template-columns:minmax(0,1fr)}
+ .system-options .price-line-identity{grid-column:1;grid-row:1}
+ .system-options .price-line-price{grid-column:1;grid-row:2}
+ .system-options .price-line-scope{grid-column:1;grid-row:3}
+ .system-options .price-line-actions{grid-column:1;grid-row:4}
+}
+
+.addon-row:has(.addon-check:disabled){opacity:.75}
+.addon-row:has(.addon-check:disabled) .addon-name::after{content:" · รวมในแพ็กเกจแล้ว";color:#2b61b8;font-size:10px}

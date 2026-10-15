@@ -56,7 +56,7 @@ form.addEventListener('submit',async event=>{
     'ชื่อธุรกิจ: '+business,
     'ประเภทธุรกิจ: '+type,
     'จังหวัด: '+(province||'ยังไม่ระบุ'),
-    'บริการที่สนใจ: '+packageName,
+    'บริการที่สนใจ: '+(document.getElementById('package-select').selectedOptions[0]?.textContent||packageName),
     'ช่องทางติดต่อกลับ: '+reply,
     'สิ่งที่ต้องการ: '+(details||'ขอปรึกษารายละเอียดเพิ่มเติม')
   ].join('\n');
