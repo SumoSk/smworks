@@ -391,3 +391,11 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
 .mark{font:800 12px/1 var(--sans);letter-spacing:-.6px;padding:0}
 .dashboard-top .mark{font-size:10px}
 .footer .mark{font-size:11px}
+
+/* Approved geometric SM / WORKS wordmark in dark navy. */
+.brand{flex-shrink:0;gap:0}
+.brand .brand-logo{display:block;width:196px;max-width:100%;height:auto;object-fit:contain}
+.footer .brand .brand-logo{width:180px}
+.dashboard-brand-icon{display:block;flex:none;width:24px;height:24px;border-radius:4px}
+@media(max-width:580px){.header .brand .brand-logo{width:176px}}
+@media(max-width:360px){.header .brand .brand-logo{width:154px}}
