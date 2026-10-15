@@ -352,7 +352,7 @@ html.js-effects .text-reveal.is-visible{opacity:1;transform:none}
 }
 
 /* SUMOWEB homepage — simplified package comparison, no noisy cards or images. */
-.home-simple-plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.home-simple-plans{display:grid;grid-template-columns:minmax(0,1fr);gap:11px}
 .home-simple-plan{display:flex;align-items:center;gap:12px;min-width:0;padding:19px 19px;border:1px solid #dfe8f4;border-radius:11px;background:#fff;transition:border-color .2s,box-shadow .2s}
 .home-simple-plan:hover{border-color:#9bb9ec;box-shadow:0 9px 24px rgba(39,87,163,.07)}
 .home-plan-number{align-self:flex-start;flex:none;font:800 10px/1.6 var(--sans);color:#80a1d5}
