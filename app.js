@@ -12,10 +12,9 @@ const LEAD_API='https://jeqbyhzbpivscsduwkcj.supabase.co/functions/v1/submit-lea
 // Supabase legacy anon JWT: a PUBLIC browser key, not the secret service-role key.
 const LEAD_PUBLIC_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplcWJ5aHpicGl2c2NzZHV3a2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5MTEzODIsImV4cCI6MjEwNzQ4NzM4Mn0.DFS66XJ_eKtyUh9LB5p3iRrE-9HpfR5GkNMcIVuuq8Q';
 const form=document.getElementById('brief-form');
-/* Pre-fill public project scope from the independent pricing page.
-   These URL parameters contain package names/estimates only, never customer data. */
-(()=>{
-  const query=new URLSearchParams(location.search);
+/* Apply package scope from old shared URLs or the pricing section on this page. */
+let appliedPricingScope='';
+function applyPricingSelection(query){
   const requested=(query.get('package')||'').trim().slice(0,90);
   const extras=(query.get('addons')||'').trim().slice(0,950);
   const care=(query.get('care')||'').trim().slice(0,100);
@@ -29,15 +28,27 @@ const form=document.getElementById('brief-form');
   if(care)lines.push('แพ็กเกจดูแลต่อเนื่องที่สนใจ: '+care);
   if(/^[0-9]{1,8}$/.test(start))lines.push('งบเริ่มต้นที่ระบบแสดง (ยังไม่ใช่ราคายืนยัน): '+Number(start).toLocaleString('th-TH')+' บาท');
   const details=form.elements.namedItem('details');
-  if(details&&lines.length){
-    details.value=lines.join('\n');
-    const note=document.createElement('p');
-    note.className='price-selection-hint';
-    note.textContent='✓ นำแพ็กเกจและบริการเสริมที่เลือกจากหน้าราคาเข้ามาให้แล้ว สามารถเพิ่มรายละเอียดได้ก่อนส่ง';
-    const label=details.closest('label');
-    if(label)label.parentNode.insertBefore(note,label);
+  if(details){
+    const current=details.value;
+    const existing=appliedPricingScope&&current.includes(appliedPricingScope)
+      ?current.replace(appliedPricingScope,'').trim():current;
+    appliedPricingScope=lines.join('\n');
+    details.value=[existing,appliedPricingScope].filter(Boolean).join('\n\n');
+    let note=document.getElementById('price-selection-hint');
+    if(!note){
+      note=document.createElement('p');
+      note.id='price-selection-hint';
+      note.className='price-selection-hint';
+      const label=details.closest('label');
+      if(label)label.parentNode.insertBefore(note,label);
+    }
+    note.textContent='✓ ใส่แพ็กเกจและบริการที่เลือกให้แล้ว เพิ่มรายละเอียดและช่องทางติดต่อกลับได้เลย';
   }
-})();
+}
+applyPricingSelection(new URLSearchParams(location.search));
+window.addEventListener('sumoweb:pricing-selection',event=>{
+  applyPricingSelection(new URLSearchParams(event.detail));
+});
 
 const briefSubmitButton=document.getElementById('brief-submit');
 document.getElementById('lead-privacy-open').addEventListener('click',()=>document.getElementById('privacy-dialog').showModal());

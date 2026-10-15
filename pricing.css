@@ -305,3 +305,22 @@
 
 .addon-row:has(.addon-check:disabled){opacity:.75}
 .addon-row:has(.addon-check:disabled) .addon-name::after{content:" · รวมในแพ็กเกจแล้ว";color:#2b61b8;font-size:10px}
+
+/* Pricing is part of the main page; the shared site header remains unchanged. */
+.pricing-inline{scroll-margin-top:82px}
+.pricing-inline>.pricing-section{padding-top:44px;padding-bottom:28px}
+.pricing-inline-details{border-block:1px solid #e3ebf6;background:#f9fbff}
+.pricing-inline-details>summary{display:flex;align-items:center;gap:14px;width:min(1160px,calc(100% - 56px));margin:0 auto;padding:19px 0;list-style:none;cursor:pointer;color:#2b568f;font-size:13px;font-weight:750}
+.pricing-inline-details>summary::-webkit-details-marker{display:none}
+.pricing-inline-details>summary small{font-size:10px;color:#7a8ea9;font-weight:500}
+.pricing-inline-details>summary b{margin-left:auto;font-size:20px;transition:transform .2s}
+.pricing-inline-details[open]>summary b{transform:rotate(180deg)}
+.pricing-inline-details .pricing-section{padding-top:30px;padding-bottom:30px}
+.pricing-inline .system-options{margin-bottom:0}
+@media(max-width:860px){.pricing-inline-details>summary{width:calc(100% - 36px)}}
+@media(max-width:600px){
+ .pricing-inline>.pricing-section{padding-top:34px;padding-bottom:22px}
+ .pricing-inline-details>summary{width:calc(100% - 30px);font-size:12px;gap:9px}
+ .pricing-inline-details>summary small{display:none}
+}
+@media(prefers-reduced-motion:reduce){.pricing-inline-details>summary b{transition:none}}

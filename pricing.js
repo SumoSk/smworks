@@ -23,6 +23,8 @@
   const fmt=n=>'฿'+Number(n).toLocaleString('en-US');
   const planSelect=el('quote-plan-select');
   const careSelect=el('quote-care-select');
+  if(!planSelect||!careSelect)return;
+  let quoteParams='';
   const checks=[...document.querySelectorAll('.addon-check')];
   let explicitPlanSelected=false;
 
@@ -60,7 +62,8 @@
     if(care.price)params.set('care',care.name);
     const hasProject=planSelect.value!=='none';
     if(hasProject||selected.length)params.set('starting',''+total);
-    el('quote-contact').href='index.html?'+params.toString()+'#contact';
+    quoteParams=params.toString();
+    el('quote-contact').href='#contact';
   }
 
   function selectPlan(key){
@@ -68,6 +71,7 @@
     explicitPlanSelected=key!=='none';
     planSelect.value=key;
     render();
+    expandTo(el('estimate'));
     el('estimate').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
   }
   function selectCare(key){
@@ -76,6 +80,7 @@
     // A care-only enquiry should not accidentally include the default website package.
     if(!explicitPlanSelected)planSelect.value='none';
     render();
+    expandTo(el('estimate'));
     el('estimate').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
   }
   planSelect.addEventListener('change',()=>{explicitPlanSelected=planSelect.value!=='none';render()});
@@ -94,52 +99,30 @@
   });
   render();
 
-  // Preserve deep links to the system examples and expandable service details.
-  function revealLinkedSection(){
-    const target=document.getElementById(location.hash.slice(1));
-    if(!target)return;
-    let parent=target.parentElement;
+  // Expand nested details for package selection and older deep links.
+  function expandTo(target){
+    let parent=target?.parentElement;
     while(parent){
       if(parent.tagName==='DETAILS')parent.open=true;
       parent=parent.parentElement;
     }
   }
+  function revealLinkedSection(){
+    const target=document.getElementById(location.hash.slice(1));
+    if(target)expandTo(target);
+  }
   revealLinkedSection();
   window.addEventListener('hashchange',revealLinkedSection);
 
-  const menuButton=el('pricing-menu-button');
-  const menu=el('pricing-mobile-menu');
-  function closeMenu(){
-    menu.hidden=true;
-    menuButton.setAttribute('aria-expanded','false');
-    menuButton.setAttribute('aria-label','เปิดเมนู');
-  }
-  menuButton.addEventListener('click',()=>{
-    const shouldOpen=menu.hidden;
-    menu.hidden=!shouldOpen;
-    menuButton.setAttribute('aria-expanded',String(shouldOpen));
-    menuButton.setAttribute('aria-label',shouldOpen?'ปิดเมนู':'เปิดเมนู');
+  // Fill the existing enquiry form without reloading or losing visitor-entered details.
+  el('quote-contact').addEventListener('click',()=>{
+    window.dispatchEvent(new CustomEvent('sumoweb:pricing-selection',{detail:quoteParams}));
   });
-  menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
-  window.matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)closeMenu()});
+  document.querySelectorAll('[data-system-enquiry]').forEach(link=>{
+    link.addEventListener('click',()=>{
+      const params=new URLSearchParams({package:link.dataset.systemEnquiry});
+      window.dispatchEvent(new CustomEvent('sumoweb:pricing-selection',{detail:params.toString()}));
+    });
+  });
 
-  // Track anonymous pricing-page visits without requesting contact details.
-  (async()=>{
-    try{
-      const publicAnonKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplcWJ5aHpicGl2c2NzZHV3a2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5MTEzODIsImV4cCI6MjEwNzQ4NzM4Mn0.DFS66XJ_eKtyUh9LB5p3iRrE-9HpfR5GkNMcIVuuq8Q';
-      let id=sessionStorage.getItem('sumoweb-tab-session-v1');
-      if(!id){id=crypto.randomUUID();sessionStorage.setItem('sumoweb-tab-session-v1',id)}
-      let origin='';
-      if(document.referrer){try{origin=new URL(document.referrer).hostname}catch(_){}}
-      const width=innerWidth;
-      const device=/iPad|Tablet/i.test(navigator.userAgent)||(width>610&&width<=1024)
-        ?'tablet':width<=610?'mobile':'desktop';
-      await fetch('https://jeqbyhzbpivscsduwkcj.supabase.co/functions/v1/site-admin',{
-        method:'POST',headers:{'Content-Type':'application/json','apikey':publicAnonKey,'Authorization':'Bearer '+publicAnonKey},
-        body:JSON.stringify({action:'track',visitor_session:id,path:location.pathname,referrer_host:origin.slice(0,160),device}),
-        keepalive:true
-      });
-    }catch(_){/* Visit tracking does not interrupt browsing. */}
-  })();
 })();
