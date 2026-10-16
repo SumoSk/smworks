@@ -11,6 +11,14 @@
  if(!ws||!ss||!cs)return;
  const checks=[...document.querySelectorAll('.addon-check')];
  let quoteParams='';
+ function updateVisibleSelectLabels(){
+  document.querySelectorAll('.quote-select').forEach(wrapper=>{
+    const input=wrapper.querySelector('select');
+    const visible=wrapper.querySelector('.quote-select-value');
+    if(!input||!visible)return;
+    visible.textContent=input.selectedOptions[0]?.textContent||'';
+  });
+ }
  const jump=()=>{const target=el('estimate');let p=target.parentElement;while(p){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement;}target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});};
  function render(){
   const w=website[ws.value]||website.none,s=system[ss.value]||system.none,c=care[cs.value]||care.none;
@@ -40,6 +48,7 @@
   if(ws.value!=='none'&&ls?.value)params.set('layout',ls.value==='single'?'เลื่อนดูส่วนต่าง ๆ ในหน้าเดียว':'แยกหน้าเพจตามหมวด');
   if(total>0)params.set('starting',String(total));
   quoteParams=params.toString();
+  updateVisibleSelectLabels();
  }
  ws.addEventListener('change',render);ss.addEventListener('change',render);cs.addEventListener('change',render);ls?.addEventListener('change',render);
  for(const c of checks)c.addEventListener('change',render);
@@ -58,4 +67,5 @@
   window.dispatchEvent(new CustomEvent('sumoweb:pricing-selection',{detail:params.toString()}));
  }));
  render();
+ document.documentElement.classList.add('quote-select-ready');
 })();
