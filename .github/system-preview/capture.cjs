@@ -6,7 +6,7 @@ const root = path.join(process.cwd(), '.github/system-preview');
 const out = path.join(process.cwd(), 'assets/system-preview');
 fs.mkdirSync(out, {recursive:true});
 const names = ['ลูกค้าตัวอย่าง 01','ลูกค้าตัวอย่าง 02','ลูกค้าตัวอย่าง 03','ลูกค้าตัวอย่าง 04','ลูกค้าตัวอย่าง 05','ลูกค้าตัวอย่าง 06','ลูกค้าตัวอย่าง 07','ลูกค้าตัวอย่าง 08','ลูกค้าตัวอย่าง 09','ลูกค้าตัวอย่าง 10','ลูกค้าตัวอย่าง 11','ลูกค้าตัวอย่าง 12'];
-const dateAgo = n => { const d = new Date(); d.setDate(d.getDate()-n); return d.toISOString().slice(0,10); };
+const dateAgo = n => { const d = new Date(); d.setDate(d.getDate()-n); return d.toLocaleDateString('en-CA', {timeZone:'Asia/Bangkok'}); };
 const today = dateAgo(0);
 const customers = names.map((name,i)=>({id:String(i+1),opd:String(i+1).padStart(4,'0'),name,full_name:name,phone:'000000'+String(i+1).padStart(4,'0'),vip:i<3?'VIP':'ทั่วไป',name_color:i===3?'yellow':'green',birth_th_ddmmyyyy:'15/10/2535',birthday:'1992-10-15',gender:i%2?'ชาย':'หญิง',address:'ที่อยู่ตัวอย่าง',created_at:dateAgo(i*5)+'T08:00:00Z',profile:'',profile_pic_url:'',note:'ข้อมูลสมมติสำหรับแสดงหน้าจอ'}));
 const services=['โบทอค (Aestox 100 u)','ฟิลเลอร์ (Neuramis สีดำ)','งานผิว (Meso Chanel)','ทรีทเม้นท์ (ทรีทเมนต์หน้าใส)'];
@@ -57,6 +57,17 @@ function api(url,req){
   });
   await page.goto('http://127.0.0.1:4173/'+template,{waitUntil:'networkidle'});
   await page.waitForTimeout(1200);
+  if(template==='record_sales'){
+   await page.locator('#opd').fill('0001');
+   await page.waitForTimeout(350);
+   await page.locator('select[name="item[]"]').first().selectOption('โบทอค');
+   await page.locator('select[name="subitem[]"]').first().selectOption('Aestox 100 u');
+   await page.locator('input[name="price[]"]').first().fill('5900');
+   await page.locator('#amount').fill('5900');
+   await page.locator('#note').fill('ตัวอย่างบันทึกบริการครั้งนี้');
+  }
+  if(template==='record_customer')await page.locator('#tabListBtn').click();
+  if(template==='appointments')await page.locator('[data-tab="daily"]').click();
   if(template==='customer_list'&&await page.locator('#btnApply').count())await page.locator('#btnApply').click();
   if(template==='crm'){
    const tab=page.locator('[data-view="followup"]');if(await tab.count())await tab.first().click();
