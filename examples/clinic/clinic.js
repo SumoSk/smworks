@@ -1,0 +1,21 @@
+'use strict';
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+if(window.self!==window.top||new URLSearchParams(location.search).has('embed'))document.body.classList.add('embedded');
+const menu=$('#main-nav'),toggle=$('#menu-toggle');
+toggle?.addEventListener('click',()=>{let open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.classList.toggle('is-open',open)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu?.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false')}});
+const filterRoot=$('[data-filter-root]');
+if(filterRoot){let category='all';const search=$('[data-filter-search]'),cards=$$('[data-filter-item]');
+ const update=()=>{const q=(search?.value||'').trim().toLowerCase();let n=0;cards.forEach(c=>{const match=(category==='all'||c.dataset.category===category)&&c.textContent.toLowerCase().includes(q);c.hidden=!match;if(match)n++});const count=$('[data-result-count]');if(count)count.textContent='แสดง '+n+' รายการ';const empty=$('[data-empty]');if(empty)empty.hidden=n>0};
+ $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.filter;$$('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));update()}));search?.addEventListener('input',update);update();}
+const searchDialog=$('#site-search'),searchInput=$('#site-search-input'),searchResults=$('#site-search-results');let searchOpener;
+function renderSearch(){let q=searchInput.value.trim().toLowerCase(),data=window.CLINIC_SEARCH||[];const hits=(q?data.filter(x=>(x.title+' '+x.description+' '+x.type).toLowerCase().includes(q)):data.slice(0,5)).slice(0,12);searchResults.replaceChildren();if(!hits.length){const p=document.createElement('p');p.className='empty-state';p.textContent='ยังไม่พบข้อมูล ลองค้นด้วยชื่อบริการหรือคำสั้น ๆ';searchResults.append(p);return}for(const hit of hits){const a=document.createElement('a');a.className='search-result';a.href=hit.url;const small=document.createElement('small');small.textContent=hit.type;const h=document.createElement('h3');h.textContent=hit.title;const p=document.createElement('p');p.textContent=hit.description;a.append(small,h,p);searchResults.append(a)}}
+$$('[data-open-search]').forEach(b=>b.addEventListener('click',()=>{searchOpener=b;searchDialog.showModal();renderSearch();searchInput.focus()}));searchInput?.addEventListener('input',renderSearch);$('[data-close-search]')?.addEventListener('click',()=>searchDialog.close());searchDialog?.addEventListener('close',()=>searchOpener?.focus());
+const lightbox=$('#gallery-lightbox');let imageOpener;
+$$('[data-gallery-src]').forEach(b=>b.addEventListener('click',()=>{imageOpener=b;$('#gallery-full').src=b.dataset.gallerySrc;$('#gallery-full').alt=b.dataset.galleryCaption;$('#gallery-caption').textContent=b.dataset.galleryCaption;lightbox.showModal()}));$('[data-close-gallery]')?.addEventListener('click',()=>lightbox.close());lightbox?.addEventListener('close',()=>imageOpener?.focus());
+$$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));
+const form=$('#consult-draft');if(form){const selected=new URLSearchParams(location.search).get('service');if(selected&&$('#consult-service').querySelector('option[value="'+CSS.escape(selected)+'"]'))$('#consult-service').value=selected;
+ form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const service=$('#consult-service').selectedOptions[0].textContent;const goal=$('#consult-goal').value.trim();const when=$('#consult-time').selectedOptions[0].textContent;$('#consult-text').textContent='หัวข้อที่อยากปรึกษา: '+service+'\nสิ่งที่อยากพูดคุย: '+(goal||'ขอประเมินและฟังคำแนะนำก่อนตัดสินใจ')+'\nช่วงเวลาที่สะดวก: '+when;$('#consult-output').hidden=false;$('#consult-output').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})});
+ $('#copy-consult')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#consult-text').textContent);$('#copy-status').textContent='คัดลอกแล้วค่ะ'}catch{$('#copy-status').textContent='เลือกข้อความด้านบนเพื่อคัดลอกได้ค่ะ'}});}
+})();
