@@ -1,5 +1,5 @@
 'use strict';
-const demos={clinic:{name:'SM Works Clinic',description:'คลินิกความงาม: นางแบบสวย ภาพบริการ และหน้าเว็บสไตล์หรูหราสมจริง'},business:{name:'SM Works Studio',description:'ธุรกิจบริการ: ดีไซน์ภาพใหญ่แบบสตูดิโอออกแบบพร้อมแสดงผลงานและบริการ'},wellness:{name:'SM Works Wellness',description:'สปาและเวลเนส: สื่อสารบรรยากาศด้วยภาพถ่ายจริงและแนะนำประสบการณ์ที่น่าจดจำ'},product:{name:'SM Works Skincare',description:'แบรนด์สินค้า: นางแบบ ภาพผลิตภัณฑ์ และเลย์เอาต์หน้าร้านสกินแคร์สไตล์พรีเมียม'}};
+const demos={clinic:{name:'SM Works Clinic',description:'คลินิกความงาม: ข้อมูลทีมแพทย์ บริการ รีวิว และช่องทางติดต่อในที่เดียว'},business:{name:'SM Works Studio',description:'ธุรกิจบริการ: ดีไซน์ภาพใหญ่แบบสตูดิโอออกแบบพร้อมแสดงผลงานและบริการ'},wellness:{name:'SM Works Wellness',description:'สปาและเวลเนส: สื่อสารบรรยากาศด้วยภาพถ่ายจริงและแนะนำประสบการณ์ที่น่าจดจำ'},product:{name:'SM Works Skincare',description:'แบรนด์สินค้า: ภาพผลิตภัณฑ์ หมวดสินค้า จุดเด่น และข้อมูลที่ช่วยตัดสินใจ'}};
 function selectDemo(button){const key=button.dataset.demo;document.querySelectorAll('[data-demo]').forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.tabIndex=b===button?0:-1});const iframe=document.getElementById('demo-iframe');iframe.src=`examples/${key}.html?embed=1&v=smworks-20261016`;iframe.title=`ตัวอย่างเว็บไซต์ ${demos[key].name}`;document.getElementById('demo-domain').textContent=demos[key].name;document.getElementById('demo-open').href=`examples/${key}.html?v=smworks-20261016`;document.getElementById('demo-description').textContent=demos[key].description;document.getElementById('preview-panel').setAttribute('aria-labelledby',button.id||`tab-${key}`)}
 function keyboardTabs(selector,onSelect){const buttons=[...document.querySelectorAll(selector)];buttons.forEach((button,index)=>{button.tabIndex=button.getAttribute('aria-selected')==='true'?0:-1;button.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%buttons.length;else if(event.key==='ArrowLeft')next=(index-1+buttons.length)%buttons.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=buttons.length-1;else return;event.preventDefault();buttons[next].focus();onSelect(buttons[next])})})}
 document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>selectDemo(button)));keyboardTabs('[data-demo]',selectDemo);
@@ -16,15 +16,21 @@ const form=document.getElementById('brief-form');
 let appliedPricingScope='';
 function applyPricingSelection(query){
   const requested=(query.get('package')||'').trim().slice(0,90);
+  const requestedSystem=(query.get('system')||'').trim().slice(0,90);
   const extras=(query.get('addons')||'').trim().slice(0,950);
   const care=(query.get('care')||'').trim().slice(0,100);
   const layout=(query.get('layout')||'').trim().slice(0,160);
   const start=(query.get('starting')||'').trim();
-  if(!requested&&!extras&&!care&&!layout)return;
+  if(!requested&&!requestedSystem&&!extras&&!care&&!layout)return;
   const picker=document.getElementById('package-select');
   const matching=[...picker.options].find(o=>o.value===requested);
   if(matching)picker.value=matching.value;
+  const systemPicker=document.getElementById('system-package-select');
+  const systemOption=[...systemPicker.options].find(o=>o.value===requestedSystem);
+  if(systemOption)systemPicker.value=systemOption.value;
   const lines=[];
+  if(requested&&requested!=='none')lines.push('เว็บไซต์ที่สนใจ: '+requested);
+  if(requestedSystem&&requestedSystem!=='none')lines.push('ระบบหลังบ้านที่สนใจ: '+requestedSystem);
   if(layout)lines.push('รูปแบบเว็บไซต์ที่สนใจ: '+layout);
   if(extras)lines.push('บริการเสริมที่สนใจ: '+extras);
   if(care)lines.push('แพ็กเกจดูแลต่อเนื่องที่สนใจ: '+care);
@@ -61,15 +67,17 @@ form.addEventListener('submit',async event=>{
   const business=String(data.get('business')||'').trim();
   const type=String(data.get('type')||'').trim();
   const province=String(data.get('province')||'').trim();
-  const packageName=String(data.get('package')||'').trim();
+  const websiteName=String(data.get('package')||'').trim();
+  const systemName=String(data.get('system_package')||'').trim();
+  const packageName=[websiteName,systemName].filter(x=>x&&x!=='none').join(' + ')||'ขอคำปรึกษาก่อน';
   const details=String(data.get('details')||'').trim();
   const reply=String(data.get('reply')||'').trim();
   const brief=[
-    'รายละเอียดงานเว็บไซต์ — SM Works',
+    'รายละเอียดงานเว็บไซต์ / ระบบหลังบ้าน — SM Works',
     'ชื่อธุรกิจ: '+business,
     'ประเภทธุรกิจ: '+type,
     'จังหวัด: '+(province||'ยังไม่ระบุ'),
-    'บริการที่สนใจ: '+(document.getElementById('package-select').selectedOptions[0]?.textContent||packageName),
+    'บริการที่สนใจ: '+packageName,
     'ช่องทางติดต่อกลับ: '+reply,
     'สิ่งที่ต้องการ: '+(details||'ขอปรึกษารายละเอียดเพิ่มเติม')
   ].join('\n');
