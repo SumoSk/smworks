@@ -3,8 +3,8 @@
  const website={none:{name:'ไม่เลือกเว็บไซต์',price:0},discovery:{name:'For AI Discovery',price:9900},website:{name:'Business Website',price:39900}};
  const system={none:{name:'ไม่เลือกระบบหลังบ้าน',price:0},basic:{name:'Business Basic',price:29900},full:{name:'Business Full',price:69900}};
  const care={none:{name:'',price:0},essential:{name:'ตรวจเช็กเว็บไซต์',price:990},content:{name:'ช่วยแก้ข้อความและรูป',price:1990},growth:{name:'อัปเดตเนื้อหาและรายงาน',price:3990},system:{name:'ดูแลเว็บที่มีระบบหลังบ้าน',price:4990}};
- const includedByWebsite={none:[],discovery:[],website:['copy','cms','gsc','schema']};
- const includedBySystem={none:[],basic:['leadform','leaddash','customdash'],full:['leadform','leaddash','customdash','roles']};
+ const includedByWebsite={none:[],discovery:['schema'],website:['cms','gsc','schema']};
+ const includedBySystem={none:[],basic:[],full:['roles']};
  const el=id=>document.getElementById(id);
  const fmt=n=>'฿'+Number(n).toLocaleString('en-US');
  const ws=el('quote-plan-select'),ss=el('quote-system-select'),cs=el('quote-care-select'),ls=el('quote-layout-select');

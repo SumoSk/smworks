@@ -395,7 +395,7 @@
 .pricing-reimagined .quote-info>p{font-size:14px}
 .pricing-reimagined .quote-info li{font-size:13px}
 .pricing-reimagined .quote-box label{font-size:13px}
-.pricing-reimagined .quote-box select{font-size:16px;min-height:46px}
+.pricing-reimagined .quote-box select{font:500 14px/1.5 var(--font);min-height:44px;padding:10px 14px;max-width:100%}
 .pricing-reimagined .quote-summary-lines>div,.pricing-reimagined .quote-monthly{font-size:13px}
 .pricing-reimagined .quote-legal{font-size:12px}
 .pricing-reimagined .terms-grid .pricing-term summary{font-size:13px;padding:17px}
@@ -403,7 +403,7 @@
 .pricing-reimagined .care-card p,.pricing-reimagined .care-footnote{font-size:12px}
 .pricing-reimagined .addon-row .addon-name{font-size:12px}
 .pricing-reimagined .pricing-inline-details>summary{min-height:66px}
-#contact select,#contact input,#contact textarea{font-size:16px}
+#contact select,#contact input,#contact textarea{font-size:14px}
 @media(max-width:950px){
  .pkg-card-title{flex-direction:column}
  .pkg-price{text-align:left}
@@ -440,3 +440,6 @@
  .pkg-workflow i{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.pkg-card,.pkg-all>summary span{transition:none}}
+
+/* Proportionate desktop controls; 16px on phones prevents iOS form-focus zoom. */
+@media(max-width:760px){.pricing-reimagined .quote-box select,#contact select,#contact input,#contact textarea{font-size:16px}}
